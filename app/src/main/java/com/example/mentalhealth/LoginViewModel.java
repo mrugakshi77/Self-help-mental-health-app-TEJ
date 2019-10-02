@@ -64,9 +64,12 @@ public class LoginViewModel extends ViewModel {
                 }
 
                 userMutableLiveData.setValue(user);
+                //checkUserCredentials();
                 busy.setValue(8); //8 == View.GONE
 
             }
         }, 3000);
     }
+
+
 }
