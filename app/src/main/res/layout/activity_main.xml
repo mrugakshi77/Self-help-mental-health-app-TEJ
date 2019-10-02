@@ -34,7 +34,8 @@
                     android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:padding="8dp"
-                    android:text="@={loginViewModel.email}" />
+                    android:text="@={loginViewModel.email}"
+                    android:layout_marginBottom="10dp"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,7 +52,9 @@
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:padding="8dp"
-                    android:text="@={loginViewModel.password}" />
+                    android:text="@={loginViewModel.password}"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,10 +63,20 @@
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:onClick="@{()-> loginViewModel.onLoginClicked()}"
-                android:text="LOGIN" />
+                android:text="LOGIN"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
 
+
+            <TextView
+                android:id="@+id/signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New user? Signup"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"/>
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -73,6 +86,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
                 android:visibility="@{loginViewModel.busy}" />
+
+
 
 
         </LinearLayout>
