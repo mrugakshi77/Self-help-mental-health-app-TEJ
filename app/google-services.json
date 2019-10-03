@@ -15,6 +15,30 @@
       },
       "oauth_client": [
         {
+          "client_id": "1092940138667-p12kdamil5smm4ug5meuuf7klsgut6qm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mentalhealth",
+            "certificate_hash": "cda76b617fe0e63b229e179aaec3b4de192e2757"
+          }
+        },
+        {
+          "client_id": "1092940138667-0gh3a346irga517n5i0did0clv5qorua.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mentalhealth",
+            "certificate_hash": "4e443776bf524c0dcffdbbbbde00095f835b63b0"
+          }
+        },
+        {
+          "client_id": "1092940138667-d69388r84liqbn0rub3t4mkm3b4adscu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mentalhealth",
+            "certificate_hash": "21c16d645a9ecbc549a1b1228c6eb5370ef14c59"
+          }
+        },
+        {
           "client_id": "1092940138667-3bpaiu4mal5058c28o9m88ubur9plisa.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

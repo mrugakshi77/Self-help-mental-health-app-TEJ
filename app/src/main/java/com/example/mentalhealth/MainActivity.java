@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Apoorva");
+        databaseReference = FirebaseDatabase.getInstance().getReference("apoorva");
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
