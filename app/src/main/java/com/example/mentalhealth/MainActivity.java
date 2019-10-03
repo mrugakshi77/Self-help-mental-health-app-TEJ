@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                Log.i("output",dataSnapshot.getValue().toString());
+                //Log.i("output",dataSnapshot.getValue().toString());
             }
 
             @Override
@@ -78,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(getApplicationContext(), "Successful Sign in", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = firebaseAuth.getCurrentUser();
+                            Intent intent = new Intent(MainActivity.this, Patient_feed.class);
+                            finish();
+                            startActivity(intent);
 
                         } else {
                             // If sign in fails, display a message to the user.

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MentalHealth</string>
+    <string name="title_activity_patient_feed">Patient_feed</string>
+    <string name="title_home">Home</string>
+    <string name="title_myaccount">My account</string>
+
 </resources>
