@@ -22,28 +22,23 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="16dp" />
 
+
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="match_parent"
-        android:layout_height="386dp"
+        android:layout_height="341dp"
         android:layout_above="@id/progress_bar"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="13dp" />
 
     <EditText
         android:id="@+id/edit_box"
         android:layout_width="278dp"
         android:layout_height="115dp"
-        android:layout_marginEnd="51dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="90dp"
         android:ems="10"
         android:hint="Write something here..."
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:maxLines="15" />
-
+        android:maxLines="15"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/upload_button"
