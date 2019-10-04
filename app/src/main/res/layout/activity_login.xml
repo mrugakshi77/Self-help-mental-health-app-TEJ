@@ -66,17 +66,17 @@
                 android:onClick="@{()-> loginViewModel.onLoginClicked()}"
                 android:text="LOGIN"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp" />
 
 
             <TextView
                 android:id="@+id/signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New user? Signup"
                 android:layout_marginLeft="150dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                android:text="New user? Signup" />
 
             <ProgressBar
                 android:id="@+id/progressBar"

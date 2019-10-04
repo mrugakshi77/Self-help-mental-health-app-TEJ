@@ -4,8 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,22 +28,36 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.databinding.DataBindingUtil;
 
-import com.example.mentalhealth.databinding.ActivityMainBinding;
+import com.example.mentalhealth.databinding.ActivityLoginBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private DatabaseReference databaseReference;
 
+    TextView signup;
+    ProgressBar busy;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        ActivityLoginBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         LoginViewModel loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
         binding.setLoginViewModel(loginViewModel);
         binding.setLifecycleOwner(this);
+
+        signup =(TextView) findViewById(R.id.signup);
+
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(i);
+            }
+        });
 
 
         loginViewModel.getUser().observe(this, new Observer<User>() {
@@ -53,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Apoorva");
+        /*databaseReference = FirebaseDatabase.getInstance().getReference("Apoorva");
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -66,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
     }
 
     private void checkUserCredentials(User user) {
@@ -89,50 +107,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-/////////REGISTER///////////////////////////////////////////////////////
-    private void register(final User user) {
-        final String mail = user.getEmail();
-        final String pass = user.getPassword();
 
-        firebaseAuth.createUserWithEmailAndPassword(mail,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    //saveUserInformation(user);
-                    Toast.makeText(getApplicationContext(), "Successful User creation", Toast.LENGTH_SHORT).show();
 
-                } else {
 
-                    if(task.getException() instanceof FirebaseAuthUserCollisionException) {
-                        Toast.makeText(getApplicationContext(), "Already Registered", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-
-                    }
-                }
-            }
-
-        });
-    }
-
-    private void saveUserInformation(final User user) {
-        //user.getEmail().replace('.','&');
-        databaseReference.child("User").child(user.getEmail().replace('.','&')).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    Toast.makeText(getApplicationContext(), "User already exists", Toast.LENGTH_LONG).show();
-                } else {
-                    databaseReference.child("User").child(user.getEmail()).setValue(user);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 /////////////////////////////////////////////////////////////////
     /*@Override
     public void onStart() {

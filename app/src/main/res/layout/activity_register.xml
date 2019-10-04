@@ -72,22 +72,16 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <Spinner
+                android:id="@+id/type"
+                android:layout_width="match_parent"
+                android:layout_height="48dp" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:error="@{registerViewModel.errorType}"
-                app:errorEnabled="true">
-
-                <EditText
-                    android:id="@+id/inType"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Type"
-                    android:inputType="textUri|textShortMessage|textEmailAddress"
-                    android:padding="8dp"
-                    android:text="@={registerViewModel.type}" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+                app:errorEnabled="true"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

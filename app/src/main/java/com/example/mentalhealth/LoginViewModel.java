@@ -1,5 +1,6 @@
 package com.example.mentalhealth;
 
+import android.content.Intent;
 import android.os.Handler;
 
 import androidx.lifecycle.LiveData;
@@ -70,6 +71,5 @@ public class LoginViewModel extends ViewModel {
             }
         }, 3000);
     }
-
 
 }

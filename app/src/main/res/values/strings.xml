@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MentalHealth</string>
+
+    <string-array name="type">
+        <item>Type</item>
+        <item>Patient</item>
+        <item>Doctor</item>
+        <item>Volunteer</item>
+    </string-array>
 </resources>
