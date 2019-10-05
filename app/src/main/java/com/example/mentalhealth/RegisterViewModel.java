@@ -59,16 +59,46 @@ public class RegisterViewModel extends ViewModel {
 
                 User user = new User(email.getValue(), password.getValue(),name.getValue(), age.getValue(),type.getValue(), confirmpassword.getValue());
 
-                if (!user.isEmailValid()) {
-                    errorEmail.setValue("Enter a valid email address");
+                if(user.getEmail().isEmpty()){
+                    errorEmail.setValue("Email is required");
                 } else {
-                    errorEmail.setValue(null);
+                    if (!user.isEmailValid()) {
+                        errorEmail.setValue("Enter valid email address");
+                    } else {
+                        errorEmail.setValue(null);
+                    }
                 }
 
-                if (!user.isPasswordLengthGreaterThan5())
-                    errorPassword.setValue("Password Length should be greater than 5");
-                else {
-                    errorPassword.setValue(null);
+                if(user.getmName().isEmpty()){
+                    errorName.setValue("Name is required");
+                } else {
+                    errorName.setValue(null);
+                }
+
+                if(user.getmAge().isEmpty()){
+                    errorAge.setValue("Age is required");
+                } else {
+                    errorAge.setValue(null);
+                }
+
+                if(user.getPassword().isEmpty()){
+                    errorPassword.setValue("Password is required");
+                } else {
+                    if (!user.isPasswordLengthGreaterThan5())
+                        errorPassword.setValue("Password Length should be greater than 5");
+                    else {
+                        errorPassword.setValue(null);
+                    }
+                }
+
+                if(user.getmConfirmPassword().isEmpty()){
+                    errorConfirmPassword.setValue("Confirm Password is required");
+                } else {
+                    if(!user.isSame()){
+                        errorConfirmPassword.setValue("Confirm password does not match");
+                    } else {
+                        errorConfirmPassword.setValue(null);
+                    }
                 }
 
 

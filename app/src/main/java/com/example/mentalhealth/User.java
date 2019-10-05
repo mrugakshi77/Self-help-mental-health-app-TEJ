@@ -77,9 +77,20 @@ public class User {
         return Patterns.EMAIL_ADDRESS.matcher(getEmail()).matches();
     }
 
-
     public boolean isPasswordLengthGreaterThan5() {
         return getPassword().length() > 5;
     }
+
+    public boolean isEmailEmpty() { return getEmail().isEmpty();}
+
+    public boolean isNameEmpty() { return getmName().isEmpty();}
+
+    public boolean isAgeEmpty() { return getmAge().isEmpty();}
+
+    public boolean isPassEmpty() { return getPassword().isEmpty();}
+
+    public boolean isConfPassEmpty() { return getmConfirmPassword().isEmpty();}
+
+    public boolean isSame() { return getmConfirmPassword().equals(getPassword());}
 
 }
