@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
         });*/
     }
 
-    private void checkUserCredentials(User user) {
+    private void checkUserCredentials(final User user) {
         firebaseAuth.signInWithEmailAndPassword(user.getEmail(), user.getPassword())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -101,7 +101,18 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(getApplicationContext(), "Successful Sign in", Toast.LENGTH_SHORT).show();
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            FirebaseUser user1 = firebaseAuth.getCurrentUser();
+                            if (user.getmType().equalsIgnoreCase("Doctor")) {
+                                Intent intent = new Intent(LoginActivity.this, Doctor_MainActivity.class);
+                                finish();
+                                startActivity(intent);
+                            }
+                           /* else if(user.getmType().equalsIgnoreCase("Patient"))
+                            {
+                                Intent intent = new Intent(LoginActivity.this,PatientHome.class);
+                                finish();
+                                startActivity(intent);
+                            }*/
 
                         } else {
                             // If sign in fails, display a message to the user.

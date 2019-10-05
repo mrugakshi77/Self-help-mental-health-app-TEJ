@@ -19,6 +19,9 @@
 
         <activity android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
             android:name=".RegisterActivity" />
+        <activity android:name=".Doctor_MainActivity">
+
+        </activity>
 
     </application>
 
