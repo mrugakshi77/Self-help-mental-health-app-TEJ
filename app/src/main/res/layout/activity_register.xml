@@ -25,6 +25,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorEmail}"
                 app:errorEnabled="true">
 
@@ -43,6 +44,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorName}"
                 app:errorEnabled="true">
 
@@ -61,6 +63,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorAge}"
                 app:errorEnabled="true">
 
@@ -84,12 +87,14 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorType}"
                 app:errorEnabled="true" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorPassword}"
                 app:errorEnabled="true">
 
@@ -108,6 +113,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorConfirmPassword}"
                 app:errorEnabled="true">
 
