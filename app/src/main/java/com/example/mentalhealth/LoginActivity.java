@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         fButton.setButtonColor(getResources().getColor(R.color.colorMidnightBlue));
 
 
-        signup =(TextView) findViewById(R.id.login);
+        signup =(TextView) findViewById(R.id.signup);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
