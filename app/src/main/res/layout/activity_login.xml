@@ -84,7 +84,7 @@
                 android:text="LOGIN"
                 app:buttonColor="#4CAF50"
                 fbutton:buttonColor="@color/color_concrete"
-                fbutton:cornerRadius="5dp"
+                fbutton:cornerRadius="100dp"
                 fbutton:shadowColor="@color/color_asbestos"
                 fbutton:shadowEnabled="true"
                 fbutton:shadowHeight="5dp" />

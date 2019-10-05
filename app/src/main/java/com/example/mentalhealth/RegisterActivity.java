@@ -2,8 +2,10 @@ package com.example.mentalhealth;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     Spinner spinner;
+    TextView login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,17 @@ public class RegisterActivity extends AppCompatActivity {
         RegisterViewModel registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
         binding.setRegisterViewModel(registerViewModel);
         binding.setLifecycleOwner(this);
+
+        login =(TextView) findViewById(R.id.login);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(i);
+            }
+        });
 
         spinner = (Spinner) findViewById(R.id.type);
         ArrayAdapter<String> myAdapter1 = new ArrayAdapter<String>(RegisterActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.type));
