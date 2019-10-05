@@ -37,7 +37,7 @@
                     android:padding="8dp"
                     android:text="@={loginViewModel.email}"
                     android:layout_marginBottom="10dp"
-                    android:ems="10"/>
+                    android:background="@drawable/round_button"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,7 +56,8 @@
                     android:padding="8dp"
                     android:text="@={loginViewModel.password}"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/round_button"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,9 +74,11 @@
 
 
             <info.hoang8f.widget.FButton
-                android:layout_width="208dp"
+                android:layout_width="142dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="LOGIN"
@@ -90,7 +93,7 @@
                 android:id="@+id/signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="150dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:text="New user? Signup" />
