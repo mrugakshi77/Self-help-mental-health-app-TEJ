@@ -31,6 +31,8 @@ public class RegisterActivity extends AppCompatActivity {
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     Spinner spinner;
 
+    info.hoang8f.widget.FButton fButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,9 @@ public class RegisterActivity extends AppCompatActivity {
         RegisterViewModel registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
         binding.setRegisterViewModel(registerViewModel);
         binding.setLifecycleOwner(this);
+
+        fButton =findViewById(R.id.button);
+        fButton.setButtonColor(getResources().getColor(R.color.colorMidnightBlue));
 
         spinner = (Spinner) findViewById(R.id.type);
         ArrayAdapter<String> myAdapter1 = new ArrayAdapter<String>(RegisterActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.type));

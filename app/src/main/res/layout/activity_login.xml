@@ -74,6 +74,7 @@
 
 
             <info.hoang8f.widget.FButton
+                android:id="@+id/button"
                 android:layout_width="142dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -82,10 +83,9 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="LOGIN"
-                app:buttonColor="#4CAF50"
-                fbutton:buttonColor="@color/color_concrete"
+                android:textColor="#ffffff"
+                fbutton:buttonColor="@colors/colorMidnightBlue"
                 fbutton:cornerRadius="5dp"
-                fbutton:shadowColor="@color/color_asbestos"
                 fbutton:shadowEnabled="true"
                 fbutton:shadowHeight="5dp" />
 
