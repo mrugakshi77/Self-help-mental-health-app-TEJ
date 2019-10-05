@@ -133,7 +133,6 @@
                 android:text="REGISTER" />-->
 
             <info.hoang8f.widget.FButton
-                android:id="@+id/button"
                 android:layout_width="208dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -141,22 +140,12 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="REGISTER"
-                android:onClick="@{()-> registerViewModel.onRegisterClicked()}"
                 app:buttonColor="#4CAF50"
                 fbutton:buttonColor="@color/color_concrete"
                 fbutton:cornerRadius="5dp"
                 fbutton:shadowColor="@color/color_asbestos"
                 fbutton:shadowEnabled="true"
                 fbutton:shadowHeight="5dp" />
-
-            <TextView
-                android:id="@+id/login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Already user? Login" />
 
 
             <ProgressBar

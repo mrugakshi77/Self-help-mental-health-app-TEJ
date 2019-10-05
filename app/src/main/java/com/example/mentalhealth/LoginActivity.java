@@ -35,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private DatabaseReference databaseReference;
 
+    info.hoang8f.widget.FButton fButton;
+
     TextView signup;
     ProgressBar busy;
 
@@ -47,6 +49,10 @@ public class LoginActivity extends AppCompatActivity {
         LoginViewModel loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
         binding.setLoginViewModel(loginViewModel);
         binding.setLifecycleOwner(this);
+
+        fButton =findViewById(R.id.button);
+        fButton.setButtonColor(getResources().getColor(R.color.colorMidnightBlue));
+
 
         signup =(TextView) findViewById(R.id.signup);
 
