@@ -33,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     Spinner spinner;
     TextView login;
+    info.hoang8f.widget.FButton fButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,9 @@ public class RegisterActivity extends AppCompatActivity {
         RegisterViewModel registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
         binding.setRegisterViewModel(registerViewModel);
         binding.setLifecycleOwner(this);
+
+        fButton =findViewById(R.id.button);
+        fButton.setButtonColor(getResources().getColor(R.color.colorMidnightBlue));
 
         login =(TextView) findViewById(R.id.login);
 
