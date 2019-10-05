@@ -52,6 +52,8 @@ public class RegisterActivity extends AppCompatActivity {
                 if (user.getEmail().length() > 0 || user.getPassword().length() > 0)
                     Toast.makeText(getApplicationContext(), "email : " + user.getEmail() + " password " + user.getPassword(), Toast.LENGTH_SHORT).show();
 
+                user.setmType(spinner.getSelectedItem().toString());
+
                 saveUserInformation(user);
 
             }

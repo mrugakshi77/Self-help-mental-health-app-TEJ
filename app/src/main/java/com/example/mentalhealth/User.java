@@ -55,6 +55,10 @@ public class User {
         return mAge;
     }
 
+    public void setmType(String mType) {
+        this.mType = mType;
+    }
+
     public String getmType() {
         if (mType == null) {
             return "";
