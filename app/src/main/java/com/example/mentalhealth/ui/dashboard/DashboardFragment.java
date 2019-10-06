@@ -205,6 +205,7 @@ public class DashboardFragment extends Fragment {
         Log.e("String",""+s+"uname: "+uname);
         u.setUserName(uname);
         Log.e("Striing", ""+u.getUserName()+"imageuri"+u.getImageUrl());
+        u.setUserEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         uploadKey = databaseReference.push().getKey();
         databaseReference.child(uploadKey).setValue(u);
 

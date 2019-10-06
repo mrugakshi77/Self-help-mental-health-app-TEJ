@@ -20,7 +20,7 @@ public class PatientHomeViewModel extends ViewModel {
 
     private List<Upload> allPosts = new ArrayList<>();
     private static final DatabaseReference POST_REF =
-            FirebaseDatabase.getInstance().getReference("dummy");
+            FirebaseDatabase.getInstance().getReference("posts");
     private final FirebaseQueryLiveData liveData = new FirebaseQueryLiveData(POST_REF);
 
 

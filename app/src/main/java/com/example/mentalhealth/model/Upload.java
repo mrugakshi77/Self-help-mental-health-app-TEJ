@@ -5,6 +5,7 @@ public class Upload {
     private String imageUrl;
     private boolean imagePresent;
     private String userName;
+    private String userEmail;
 
     public Upload() {
         this.post = "";
@@ -25,6 +26,14 @@ public class Upload {
         this.post = post;
         this.imageUrl = imageUrl;
         this.userName = "dummy";
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getPost() {

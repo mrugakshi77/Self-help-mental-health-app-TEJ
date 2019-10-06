@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.mentalhealth.FirebaseQueryLiveData;
 import com.example.mentalhealth.Model.Upload;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -24,7 +25,7 @@ public class HomeViewModel extends ViewModel {
     private List<Upload> allPosts = new ArrayList<>();
     private static final DatabaseReference POST_REF =
             FirebaseDatabase.getInstance().getReference("posts");
-    private final FirebaseQueryLiveData liveData = new FirebaseQueryLiveData(POST_REF.orderByChild("userName").equalTo("Reetika"));
+    private final FirebaseQueryLiveData liveData = new FirebaseQueryLiveData(POST_REF.orderByChild("userEmail").equalTo(FirebaseAuth.getInstance().getCurrentUser().getEmail()));
 
 
     public LiveData<List<Upload>> getPostsLiveData() {
@@ -32,7 +33,7 @@ public class HomeViewModel extends ViewModel {
         return postsLiveData;
     }
 
-    
+
 
     private class Deserializer implements Function<DataSnapshot, List<Upload>> {
 
