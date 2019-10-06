@@ -34,8 +34,9 @@ public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private DatabaseReference databaseReference;
-
+    LoginViewModel loginViewModel;
     TextView signup;
+    String userType;
     ProgressBar busy;
 
     @Override
@@ -44,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         ActivityLoginBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        LoginViewModel loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
         binding.setLoginViewModel(loginViewModel);
         binding.setLifecycleOwner(this);
 
@@ -96,6 +97,20 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(getApplicationContext(), "Successful Sign in", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = firebaseAuth.getCurrentUser();
+                            Log.e("type",""+userType);
+                            /*   if(userType.equals("Patient")){
+                                Intent intent = new Intent(LoginActivity.this, Patient_feed.class);
+                                finish();
+                                startActivity(intent);
+                            }
+                            else if(userType.equals("")){
+
+                            }
+                            else if(userType.equals("")){
+
+                            }*/
+
+
 
                         } else {
                             // If sign in fails, display a message to the user.

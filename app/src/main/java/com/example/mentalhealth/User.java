@@ -68,8 +68,12 @@ public class User {
         }
         return mConfirmPassword;
     }
+    public void setmType(String mType) {
+        this.mType = mType;
+    }
+    
 
-    public boolean isEmailValid() {
+        public boolean isEmailValid() {
         return Patterns.EMAIL_ADDRESS.matcher(getEmail()).matches();
     }
 

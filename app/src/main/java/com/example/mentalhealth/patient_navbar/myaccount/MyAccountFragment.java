@@ -39,7 +39,7 @@ public class MyAccountFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 myAccountViewModel.signOut();
-                Intent intent1 = new Intent(getActivity(), MainActivity.class);
+                Intent intent1 = new Intent(getActivity(), LoginActivity.class);
                 getActivity().finish();
                 startActivity(intent1);
             }

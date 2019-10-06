@@ -2,6 +2,7 @@ package com.example.mentalhealth;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -45,6 +46,8 @@ public class RegisterActivity extends AppCompatActivity {
         ArrayAdapter<String> myAdapter1 = new ArrayAdapter<String>(RegisterActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.type));
         myAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(myAdapter1);
+//        spinner.setPrompt("Type");
+        Log.e("error",""+"ssup");
 
         registerViewModel.getUser().observe(this, new Observer<User>() {
             @Override
@@ -52,7 +55,10 @@ public class RegisterActivity extends AppCompatActivity {
                 if (user.getEmail().length() > 0 || user.getPassword().length() > 0)
                     Toast.makeText(getApplicationContext(), "email : " + user.getEmail() + " password " + user.getPassword(), Toast.LENGTH_SHORT).show();
 
+                user.setmType(spinner.getSelectedItem().toString());
+
                 saveUserInformation(user);
+                Log.e("register error", user.getEmail()+"");
 
             }
         });
@@ -70,6 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                     //saveUserInformation(user);
                     Toast.makeText(getApplicationContext(), "Successful User creation", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(RegisterActivity.this,LoginActivity.class);
+                    finish();
                     startActivity(i);
 
                 } else {
@@ -99,6 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
                 } else {
                     databaseReference.child("User").child(user.getEmail().replace('.','&')).setValue(user);
                     register(user);
+                    Toast.makeText(getApplicationContext(), "saved", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override

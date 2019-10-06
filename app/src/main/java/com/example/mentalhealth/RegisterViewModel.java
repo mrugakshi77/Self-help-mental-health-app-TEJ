@@ -1,6 +1,7 @@
 package com.example.mentalhealth;
 
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -57,8 +58,8 @@ public class RegisterViewModel extends ViewModel {
             public void run() {
 
 
-                User user = new User(email.getValue(), password.getValue(),name.getValue(), age.getValue(),type.getValue(), confirmpassword.getValue());
-
+                User user = new User(email.getValue(), password.getValue(),name.getValue(), age.getValue(),"d", confirmpassword.getValue());
+                Log.e("errr",user.getEmail()+"");
                 if (!user.isEmailValid()) {
                     errorEmail.setValue("Enter a valid email address");
                 } else {
