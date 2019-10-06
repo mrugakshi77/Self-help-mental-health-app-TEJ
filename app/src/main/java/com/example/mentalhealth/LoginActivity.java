@@ -41,6 +41,9 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        setTheme(R.style.AppTheme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -98,11 +101,11 @@ public class LoginActivity extends AppCompatActivity {
 
                                     /*  REDIRECTING TO DASHBOARD
 
-                                    if(userType[0].equals("Patient"))
+                                    if(userType.equals("Patient"))
                                     {
                                         //i = new Intent(LoginActivity.this, Patient_dashboard.class)
                                     }
-                                    else if(userType[0].equals("Doctor"))
+                                    else if(userType.equals("Doctor"))
                                     {
                                         //i = new Intent(LoginActivity.this, Doctor_dashboard.class)
                                     }
