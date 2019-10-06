@@ -21,6 +21,8 @@ public class SplashActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
+    private Intent i;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,15 +41,18 @@ public class SplashActivity extends AppCompatActivity {
                     /*  REDIRECTING TO DASHBOARD*/
 
                     if (userType.equals("Patient")) {
-                        Intent i = new Intent(SplashActivity.this, Patient_feed.class);
+                        i = new Intent(SplashActivity.this, Patient_feed.class);
                         finish();
-                        startActivity(i);
-                    } else if (userType.equals("Doctor")) {
-                        //i = new Intent(LoginActivity.this, Doctor_dashboard.class)
-                    } else {
-                        //i = new Intent(LoginActivity.this, Volunteer_dashboard.class)
+
                     }
-                    //startActivity(i);
+                    if (userType.equals("Doctor")) {
+                        i = new Intent(SplashActivity.this, Doctor_MainActivity.class);
+                        finish();
+                    }
+                    /*else {
+                        //i = new Intent(LoginActivity.this, Volunteer_dashboard.class)
+                    }*/
+                    startActivity(i);
                 }
 
                 @Override
