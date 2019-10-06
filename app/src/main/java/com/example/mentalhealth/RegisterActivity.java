@@ -42,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         ActivityRegisterBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
-        RegisterViewModel registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
+        final RegisterViewModel registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
         binding.setRegisterViewModel(registerViewModel);
         binding.setLifecycleOwner(this);
 
@@ -71,10 +71,8 @@ public class RegisterActivity extends AppCompatActivity {
                 if (user.getEmail().length() > 0 || user.getPassword().length() > 0)
                     Toast.makeText(getApplicationContext(), "email : " + user.getEmail() + " password " + user.getPassword(), Toast.LENGTH_SHORT).show();
 
-                user.setmType(spinner.getSelectedItem().toString());
-
-                saveUserInformation(user);
-
+                    user.setmType(spinner.getSelectedItem().toString());
+                    saveUserInformation(user);
             }
         });
 
@@ -88,15 +86,36 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    //saveUserInformation(user);
+
+                    Intent i;
+
                     Toast.makeText(getApplicationContext(), "Successful User creation", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(RegisterActivity.this,LoginActivity.class);
-                    startActivity(i);
+
+                    Toast.makeText(getApplicationContext(), user.getmType(), Toast.LENGTH_SHORT).show();
+
+                    /* Redirecting to dashboards
+
+                    if(user.getmType().equals("Patient"))
+                    {
+                        //i = new Intent(RegisterActivity.this,patient_dashboard.class);
+                    }
+                    else if(user.getmType().equals("Doctor"))
+                    {
+                        //i = new Intent(RegisterActivity.this,doctor_dashboard.class);
+                    }
+                    else
+                    {
+                        //i = new Intent(RegisterActivity.this,volunteer_dashboard.class);
+                    }
+
+                    //startActivity(i);
+
+                   */
 
                 } else {
 
                     if(task.getException() instanceof FirebaseAuthUserCollisionException) {
-                        Toast.makeText(getApplicationContext(), "Already Registered", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "User with this email already exists", Toast.LENGTH_SHORT).show();
                     }
                     else{
                         Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
@@ -116,7 +135,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    Toast.makeText(getApplicationContext(), "User already exists", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "User with this email already exists", Toast.LENGTH_LONG).show();
                 } else {
                     databaseReference.child("User").child(user.getEmail().replace('.','&')).setValue(user);
                     register(user);

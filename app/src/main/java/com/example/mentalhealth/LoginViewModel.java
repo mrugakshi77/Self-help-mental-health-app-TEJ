@@ -15,6 +15,7 @@ public class LoginViewModel extends ViewModel {
     public MutableLiveData<String> email = new MutableLiveData<>();
     public MutableLiveData<String> password = new MutableLiveData<>();
     public MutableLiveData<Integer> busy;
+    public MutableLiveData<Integer> flag = new MutableLiveData<>();
 
     public MutableLiveData<Integer> getBusy() {
 
@@ -44,6 +45,7 @@ public class LoginViewModel extends ViewModel {
 
     public void onLoginClicked() {
 
+        flag.setValue(0);
         getBusy().setValue(0); //View.VISIBLE
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -54,18 +56,23 @@ public class LoginViewModel extends ViewModel {
 
                 if (!user.isEmailValid()) {
                     errorEmail.setValue("Enter a valid email address");
+                    flag.setValue(1);
                 } else {
                     errorEmail.setValue(null);
                 }
 
-                if (!user.isPasswordLengthGreaterThan5())
+                if (!user.isPasswordLengthGreaterThan5()) {
                     errorPassword.setValue("Password Length should be greater than 5");
+                    flag.setValue(1);
+                }
                 else {
                     errorPassword.setValue(null);
                 }
 
-                userMutableLiveData.setValue(user);
-                //checkUserCredentials();
+                if(flag.getValue()==0) {
+                    userMutableLiveData.setValue(user);
+                }
+
                 busy.setValue(8); //8 == View.GONE
 
             }

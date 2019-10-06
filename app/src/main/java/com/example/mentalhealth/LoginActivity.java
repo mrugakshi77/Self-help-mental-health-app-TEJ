@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -16,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
 import androidx.lifecycle.Observer;
@@ -23,11 +26,13 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.databinding.DataBindingUtil;
 
 import com.example.mentalhealth.databinding.ActivityLoginBinding;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();;
 
     info.hoang8f.widget.FButton fButton;
 
@@ -67,27 +72,11 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "email : " + user.getEmail() + " password " + user.getPassword(), Toast.LENGTH_SHORT).show();
 
                     checkUserCredentials(user);
-                    //saveUserInformation(user);
             }
         });
-
-        /*databaseReference = FirebaseDatabase.getInstance().getReference("Apoorva");
-
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                Log.i("output",dataSnapshot.getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });*/
     }
 
-    private void checkUserCredentials(User user) {
+    private void checkUserCredentials(final User user) {
         firebaseAuth.signInWithEmailAndPassword(user.getEmail(), user.getPassword())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -95,11 +84,46 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(getApplicationContext(), "Successful Sign in", Toast.LENGTH_SHORT).show();
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            final FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+                            Intent i;
 
+                            databaseReference.addValueEventListener(new ValueEventListener() {
+
+                                String userType = "";
+
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    userType = dataSnapshot.child("User").child(currentUser.getEmail().replace('.','&')).child("mType").getValue().toString();
+                                    Toast.makeText(getApplicationContext(), userType, Toast.LENGTH_SHORT).show();
+
+                                    /*  REDIRECTING TO DASHBOARD
+
+                                    if(userType[0].equals("Patient"))
+                                    {
+                                        //i = new Intent(LoginActivity.this, Patient_dashboard.class)
+                                    }
+                                    else if(userType[0].equals("Doctor"))
+                                    {
+                                        //i = new Intent(LoginActivity.this, Doctor_dashboard.class)
+                                    }
+                                    else
+                                    {
+                                        //i = new Intent(LoginActivity.this, Volunteer_dashboard.class)
+                                    }
+                                    //startActivity(i);
+
+                                    */
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(getApplicationContext(), "Unsuccessful sign in", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Incorrect email or password", Toast.LENGTH_SHORT).show();
 
                         }
 
