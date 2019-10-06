@@ -47,7 +47,8 @@
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{loginViewModel.errorPassword}"
-                app:errorEnabled="true">
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true">
 
                 <EditText
                     android:id="@+id/inPassword"
