@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">MentalHealth</string>
+    <string name="title_activity_patient_feed">Patient_feed</string>
+    <string name="title_home">Home</string>
+    <string name="title_myaccount">My account</string>
+    <string name="title_pmyaccount">My account</string>
+    <string name="title_phome">Home</string>
 
     <string-array name="type">
-        <item>Type</item>
         <item>Patient</item>
         <item>Doctor</item>
         <item>Volunteer</item>
     </string-array>
+
 </resources>

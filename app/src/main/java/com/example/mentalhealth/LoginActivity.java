@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mentalhealth.databinding.ActivityLoginBindingImpl;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
         ActivityLoginBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         LoginViewModel loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
@@ -88,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(getApplicationContext(), "Successful Sign in", Toast.LENGTH_SHORT).show();
                             final FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-                            Intent i;
+                           // Intent i;
 
                             databaseReference.addValueEventListener(new ValueEventListener() {
 
@@ -99,11 +101,13 @@ public class LoginActivity extends AppCompatActivity {
                                     userType = dataSnapshot.child("User").child(currentUser.getEmail().replace('.','&')).child("mType").getValue().toString();
                                     Toast.makeText(getApplicationContext(), userType, Toast.LENGTH_SHORT).show();
 
-                                    /*  REDIRECTING TO DASHBOARD
+                                    /*  REDIRECTING TO DASHBOARD*/
 
                                     if(userType.equals("Patient"))
                                     {
-                                        //i = new Intent(LoginActivity.this, Patient_dashboard.class)
+                                        Intent i = new Intent(LoginActivity.this, Patient_feed.class);
+                                        finish();
+                                        startActivity(i);
                                     }
                                     else if(userType.equals("Doctor"))
                                     {
@@ -115,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                     //startActivity(i);
 
-                                    */
+
 
                                 }
 

@@ -73,7 +73,9 @@ public class User {
         return mConfirmPassword;
     }
 
-    public boolean isEmailValid() {
+    
+
+        public boolean isEmailValid() {
         return Patterns.EMAIL_ADDRESS.matcher(getEmail()).matches();
     }
 
