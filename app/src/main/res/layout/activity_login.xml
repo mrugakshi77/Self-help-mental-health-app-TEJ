@@ -22,7 +22,7 @@
             android:layout_margin="8dp"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.example.mentalhealth.CustomTextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
@@ -40,9 +40,9 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/round_button"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.example.mentalhealth.CustomTextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.example.mentalhealth.CustomTextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
@@ -61,7 +61,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/round_button"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.example.mentalhealth.CustomTextInputLayout>
 
 
             <!--<Button

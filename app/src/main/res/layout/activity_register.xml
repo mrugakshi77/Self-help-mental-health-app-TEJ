@@ -22,7 +22,7 @@
             android:layout_margin="8dp"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.example.mentalhealth.CustomTextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
@@ -40,9 +40,9 @@
                     android:text="@={registerViewModel.email}"
                     android:background="@drawable/round_button"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.example.mentalhealth.CustomTextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.example.mentalhealth.CustomTextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
@@ -59,9 +59,9 @@
                     android:text="@={registerViewModel.name}"
                     android:background="@drawable/round_button"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.example.mentalhealth.CustomTextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.example.mentalhealth.CustomTextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
@@ -78,21 +78,21 @@
                     android:text="@={registerViewModel.age}"
                     android:background="@drawable/round_button"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.example.mentalhealth.CustomTextInputLayout>
 
             <Spinner
                 android:id="@+id/type"
                 android:layout_width="match_parent"
                 android:layout_height="45dp" />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.example.mentalhealth.CustomTextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorType}"
                 app:errorEnabled="true" />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.example.mentalhealth.CustomTextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
@@ -109,9 +109,9 @@
                     android:text="@={registerViewModel.password}"
                     android:background="@drawable/round_button"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.example.mentalhealth.CustomTextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.example.mentalhealth.CustomTextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
@@ -128,7 +128,7 @@
                     android:text="@={registerViewModel.confirmpassword}"
                     android:background="@drawable/round_button"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.example.mentalhealth.CustomTextInputLayout>
 
 
            <!-- <Button
