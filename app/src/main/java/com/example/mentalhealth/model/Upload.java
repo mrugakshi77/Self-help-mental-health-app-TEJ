@@ -18,7 +18,7 @@ public class Upload {
         if (post.trim().equals("")) {
             this.post = "No name";
         }
-        if (imageUrl.trim().equals("")) {
+        if (imageUrl.isEmpty() || imageUrl.trim().equals(" ")) {
             imagePresent = false;
         } else
             imagePresent = true;
