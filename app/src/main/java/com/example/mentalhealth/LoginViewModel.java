@@ -1,11 +1,15 @@
 package com.example.mentalhealth;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Handler;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 public class LoginViewModel extends ViewModel {
 
@@ -15,6 +19,9 @@ public class LoginViewModel extends ViewModel {
     public MutableLiveData<String> email = new MutableLiveData<>();
     public MutableLiveData<String> password = new MutableLiveData<>();
     public MutableLiveData<Integer> busy;
+    public MutableLiveData<String> uType;
+    Query query;
+
 
     public MutableLiveData<Integer> getBusy() {
 
@@ -25,6 +32,14 @@ public class LoginViewModel extends ViewModel {
 
         return busy;
     }
+
+   /* public String getType(String email){
+        query = FirebaseDatabase.getInstance().getReference().orderByChild("User").orderByChild("email").equalTo(email);
+        FirebaseQueryLiveData firebaseQueryLiveData = new FirebaseQueryLiveData(query);
+        uType.setValue(firebaseQueryLiveData.toString());
+        return uType.toString();
+    }*/
+
 
 
     public LoginViewModel() {

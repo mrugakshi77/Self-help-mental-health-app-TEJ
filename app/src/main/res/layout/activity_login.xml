@@ -87,7 +87,8 @@
                 fbutton:buttonColor="@colors/colorMidnightBlue"
                 fbutton:cornerRadius="5dp"
                 fbutton:shadowEnabled="true"
-                fbutton:shadowHeight="5dp" />
+                fbutton:shadowHeight="5dp"
+                android:onClick="@{ ()-> loginViewModel.onLoginClicked() }" />
 
             <TextView
                 android:id="@+id/signup"

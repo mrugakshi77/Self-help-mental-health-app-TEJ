@@ -34,7 +34,9 @@ public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private DatabaseReference databaseReference;
+    private String uType;
 
+    private LoginViewModel loginViewModel;
     info.hoang8f.widget.FButton fButton;
 
     TextView signup;
@@ -101,12 +103,11 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(getApplicationContext(), "Successful Sign in", Toast.LENGTH_SHORT).show();
-                            FirebaseUser user1 = firebaseAuth.getCurrentUser();
-                            if (user.getmType().equalsIgnoreCase("Doctor")) {
-                                Intent intent = new Intent(LoginActivity.this, Doctor_MainActivity.class);
-                                finish();
-                                startActivity(intent);
-                            }
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            // uType = loginViewModel.getType(user.getEmail().toString());
+                            Intent intent = new Intent(LoginActivity.this, Doctor_MainActivity.class);
+                            finish();
+                            startActivity(intent);
                            /* else if(user.getmType().equalsIgnoreCase("Patient"))
                             {
                                 Intent intent = new Intent(LoginActivity.this,PatientHome.class);
