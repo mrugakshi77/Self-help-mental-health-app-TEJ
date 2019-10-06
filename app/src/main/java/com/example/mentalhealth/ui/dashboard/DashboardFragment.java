@@ -30,8 +30,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -59,11 +64,12 @@ public class DashboardFragment extends Fragment {
 
     private Uri uri;
 
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference, dbref;
     private DatabaseReference databaseRef;
     private StorageTask uploadTask;
     private String downloadURL;
     private String uploadKey;
+    private String uname;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -76,6 +82,7 @@ public class DashboardFragment extends Fragment {
         progressBar = root.findViewById(R.id.progress_bar);
 
         storageReference = FirebaseStorage.getInstance().getReference("posts");
+        dbref = FirebaseDatabase.getInstance().getReference("User");
         databaseReference = FirebaseDatabase.getInstance().getReference("posts");
         databaseRef = FirebaseDatabase.getInstance().getReference("downloadableURLs");
         chooseFileButton.setOnClickListener(new View.OnClickListener() {
@@ -166,9 +173,25 @@ public class DashboardFragment extends Fragment {
                     if (task.isSuccessful()) {
                         Uri downloadUri = task.getResult();
                         Log.d(TAG, "onComplete: Url: " + downloadUri.toString());
-                        Upload upload = new Upload(editText.getText().toString().trim(), downloadUri.toString());
-                        uploadKey = databaseReference.push().getKey();
-                        databaseReference.child(uploadKey).setValue(upload);
+                        final Upload upload = new Upload(editText.getText().toString().trim(), downloadUri.toString());
+
+                        dbref.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                FirebaseUser curr_user = FirebaseAuth.getInstance().getCurrentUser();
+                                uploadPost(upload, dataSnapshot.child(curr_user.getEmail().replace('.', '&')).child("mName").getValue().toString());
+
+                            }
+
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                        //upload.setUserName(uname);
+                       // uploadKey = databaseReference.push().getKey();
+                        //databaseReference.child(uploadKey).setValue(upload);
 
                     }
                 }
@@ -176,6 +199,15 @@ public class DashboardFragment extends Fragment {
 
         } else
             Toast.makeText(getContext(), "No file selected", Toast.LENGTH_SHORT).show();
+    }
+    private void uploadPost(Upload u, String s){
+        uname = s;
+        Log.e("String",""+s+"uname: "+uname);
+        u.setUserName(uname);
+        Log.e("Striing", ""+u.getUserName()+"imageuri"+u.getImageUrl());
+        uploadKey = databaseReference.push().getKey();
+        databaseReference.child(uploadKey).setValue(u);
+
     }
 
    /* private void uploadDownloadableURLs()

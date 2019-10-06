@@ -32,6 +32,8 @@ public class HomeViewModel extends ViewModel {
         return postsLiveData;
     }
 
+    
+
     private class Deserializer implements Function<DataSnapshot, List<Upload>> {
 
         @Override

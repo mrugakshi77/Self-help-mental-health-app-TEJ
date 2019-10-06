@@ -24,7 +24,7 @@ public class Upload {
             imagePresent = true;
         this.post = post;
         this.imageUrl = imageUrl;
-        this.userName = "Reetika";
+        this.userName = "dummy";
     }
 
     public String getPost() {
