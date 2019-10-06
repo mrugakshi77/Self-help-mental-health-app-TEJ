@@ -2,9 +2,10 @@ package com.example.mentalhealth;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,9 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     Spinner spinner;
+    TextView login;
+
+    info.hoang8f.widget.FButton fButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +42,28 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         ActivityRegisterBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
-        RegisterViewModel registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
+        final RegisterViewModel registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
         binding.setRegisterViewModel(registerViewModel);
         binding.setLifecycleOwner(this);
+
+        login =(TextView) findViewById(R.id.login);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(i);
+            }
+        });
+
+        fButton =findViewById(R.id.button);
+        fButton.setButtonColor(getResources().getColor(R.color.colorMidnightBlue));
 
         spinner = (Spinner) findViewById(R.id.type);
         ArrayAdapter<String> myAdapter1 = new ArrayAdapter<String>(RegisterActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.type));
         myAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(myAdapter1);
-//        spinner.setPrompt("Type");
-        Log.e("error",""+"ssup");
 
         registerViewModel.getUser().observe(this, new Observer<User>() {
             @Override
@@ -55,11 +71,8 @@ public class RegisterActivity extends AppCompatActivity {
                 if (user.getEmail().length() > 0 || user.getPassword().length() > 0)
                     Toast.makeText(getApplicationContext(), "email : " + user.getEmail() + " password " + user.getPassword(), Toast.LENGTH_SHORT).show();
 
-                user.setmType(spinner.getSelectedItem().toString());
-
-                saveUserInformation(user);
-                Log.e("register error", user.getEmail()+"");
-
+                    user.setmType(spinner.getSelectedItem().toString());
+                    saveUserInformation(user);
             }
         });
 
@@ -73,16 +86,36 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    //saveUserInformation(user);
+
+                    Intent i;
+
                     Toast.makeText(getApplicationContext(), "Successful User creation", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(RegisterActivity.this,LoginActivity.class);
-                    finish();
-                    startActivity(i);
+
+                    Toast.makeText(getApplicationContext(), user.getmType(), Toast.LENGTH_SHORT).show();
+
+                    /* Redirecting to dashboards
+
+                    if(user.getmType().equals("Patient"))
+                    {
+                        //i = new Intent(RegisterActivity.this,patient_dashboard.class);
+                    }
+                    else if(user.getmType().equals("Doctor"))
+                    {
+                        //i = new Intent(RegisterActivity.this,doctor_dashboard.class);
+                    }
+                    else
+                    {
+                        //i = new Intent(RegisterActivity.this,volunteer_dashboard.class);
+                    }
+
+                    //startActivity(i);
+
+                   */
 
                 } else {
 
                     if(task.getException() instanceof FirebaseAuthUserCollisionException) {
-                        Toast.makeText(getApplicationContext(), "Already Registered", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "User with this email already exists", Toast.LENGTH_SHORT).show();
                     }
                     else{
                         Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
@@ -102,11 +135,10 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    Toast.makeText(getApplicationContext(), "User already exists", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "User with this email already exists", Toast.LENGTH_LONG).show();
                 } else {
                     databaseReference.child("User").child(user.getEmail().replace('.','&')).setValue(user);
                     register(user);
-                    Toast.makeText(getApplicationContext(), "saved", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override

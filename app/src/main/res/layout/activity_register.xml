@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:fbutton="http://schemas.android.com/tools">
 
     <data>
 
@@ -25,6 +25,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorEmail}"
                 app:errorEnabled="true">
 
@@ -32,16 +33,19 @@
                     android:id="@+id/inEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
-                    android:padding="8dp"
-                    android:text="@={registerViewModel.email}" />
+                    android:padding="6dp"
+                    android:text="@={registerViewModel.email}"
+                    android:background="@drawable/round_button"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorName}"
                 app:errorEnabled="true">
 
@@ -51,14 +55,16 @@
                     android:layout_height="wrap_content"
                     android:hint="Name"
                     android:inputType="textEmailAddress"
-                    android:padding="8dp"
-                    android:text="@={registerViewModel.name}" />
+                    android:padding="6dp"
+                    android:text="@={registerViewModel.name}"
+                    android:background="@drawable/round_button"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorAge}"
                 app:errorEnabled="true">
 
@@ -68,29 +74,28 @@
                     android:layout_height="wrap_content"
                     android:hint="Age"
                     android:inputType="textUri|number|text"
-                    android:padding="8dp"
-                    android:text="@={registerViewModel.age}" />
+                    android:padding="6dp"
+                    android:text="@={registerViewModel.age}"
+                    android:background="@drawable/round_button"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Spinner
                 android:id="@+id/type"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:entries="@array/type"
-
-                
-                />
+                android:layout_height="45dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorType}"
-                app:errorEnabled="true"/>
+                app:errorEnabled="true" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorPassword}"
                 app:errorEnabled="true">
 
@@ -100,14 +105,16 @@
                     android:layout_height="wrap_content"
                     android:hint="Password"
                     android:inputType="textPassword"
-                    android:padding="8dp"
-                    android:text="@={registerViewModel.password}" />
+                    android:padding="6dp"
+                    android:text="@={registerViewModel.password}"
+                    android:background="@drawable/round_button"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorConfirmPassword}"
                 app:errorEnabled="true">
 
@@ -117,19 +124,45 @@
                     android:layout_height="wrap_content"
                     android:hint="Confirm Password"
                     android:inputType="textPassword"
-                    android:padding="8dp"
-                    android:text="@={registerViewModel.confirmpassword}" />
+                    android:padding="6dp"
+                    android:text="@={registerViewModel.confirmpassword}"
+                    android:background="@drawable/round_button"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <Button
+           <!-- <Button
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:onClick="@{()-> registerViewModel.onRegisterClicked()}"
-                android:text="REGISTER" />
+                android:text="REGISTER" />-->
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/button"
+                android:layout_width="208dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="REGISTER"
+                android:onClick="@{()-> registerViewModel.onRegisterClicked()}"
+                android:textColor="#ffffff"
+                fbutton:buttonColor="@colors/colorMidnightBlue"
+                fbutton:cornerRadius="5dp"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp" />
+
+            <TextView
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Already user? Login" />
 
 
             <ProgressBar

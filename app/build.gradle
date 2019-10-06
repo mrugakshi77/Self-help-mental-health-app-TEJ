@@ -41,4 +41,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0'
     implementation 'com.google.android.material:material:1.0.0'
+
+    implementation 'info.hoang8f:fbutton:1.0.5'
 }

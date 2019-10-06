@@ -16,10 +16,19 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mentalhealth.LoginActivity;
 import com.example.mentalhealth.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MyAccountFragment extends Fragment {
 
     private MyAccountViewModel myAccountViewModel;
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -28,12 +37,23 @@ public class MyAccountFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_myaccount, container, false);
         final TextView textView = root.findViewById(R.id.Username);
         Button logOut = root.findViewById(R.id.LogOut);
-        myAccountViewModel.getText().observe(this, new Observer<String>() {
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser curruser = firebaseAuth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String uname = dataSnapshot.child("User").child(curruser.getEmail().replace('.','&')).child("mName").getValue().toString();
+                textView.setText("Username : "+ uname);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
+
 
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override

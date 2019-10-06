@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/tools">
 
     <data>
 
@@ -24,6 +25,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{loginViewModel.errorEmail}"
                 app:errorEnabled="true">
 
@@ -35,13 +37,15 @@
                     android:inputType="textEmailAddress"
                     android:padding="8dp"
                     android:text="@={loginViewModel.email}"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/round_button"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{loginViewModel.errorPassword}"
                 app:errorEnabled="true">
 
@@ -54,26 +58,45 @@
                     android:padding="8dp"
                     android:text="@={loginViewModel.password}"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/round_button"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <Button
+            <!--<Button
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="@{()-> loginViewModel.onLoginClicked()}"
                 android:text="LOGIN"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="10dp"
+                android:gravity="bottom" />-->
 
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/button"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="LOGIN"
+                android:onClick="@{()-> loginViewModel.onLoginClicked()}"
+                android:textColor="#ffffff"
+                fbutton:buttonColor="@colors/colorMidnightBlue"
+                fbutton:cornerRadius="5dp"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp" />
 
             <TextView
                 android:id="@+id/signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="150dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:text="New user? Signup" />

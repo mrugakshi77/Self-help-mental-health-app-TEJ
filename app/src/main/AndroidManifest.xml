@@ -4,22 +4,31 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/tej_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity"
+            android:theme="@style/SplashTheme">
+        </activity>
+
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Patient_feed" />
-        <activity
+
+        <activity android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
             android:name=".RegisterActivity" />
+        <activity android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
+            android:name=".Patient_feed" />
+
     </application>
 
+
+<!--android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"-->
 </manifest>
