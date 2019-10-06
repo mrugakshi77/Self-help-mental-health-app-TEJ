@@ -22,9 +22,10 @@
             android:layout_margin="8dp"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.example.mentalhealth.CustomTextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{loginViewModel.errorEmail}"
                 app:errorEnabled="true">
 
@@ -39,13 +40,15 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/round_button"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.example.mentalhealth.CustomTextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.example.mentalhealth.CustomTextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{loginViewModel.errorPassword}"
-                app:errorEnabled="true">
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true">
 
                 <EditText
                     android:id="@+id/inPassword"
@@ -59,7 +62,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/round_button"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.example.mentalhealth.CustomTextInputLayout>
 
 
             <!--<Button
@@ -83,6 +86,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="LOGIN"
+                android:onClick="@{()-> loginViewModel.onLoginClicked()}"
                 android:textColor="#ffffff"
                 fbutton:buttonColor="@colors/colorMidnightBlue"
                 fbutton:cornerRadius="5dp"
