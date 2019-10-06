@@ -97,7 +97,8 @@
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorPassword}"
-                app:errorEnabled="true">
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true">
 
                 <EditText
                     android:id="@+id/inPassword"
@@ -116,7 +117,8 @@
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{registerViewModel.errorConfirmPassword}"
-                app:errorEnabled="true">
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true">
 
                 <EditText
                     android:id="@+id/inConfirmPassword"
@@ -172,7 +174,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
-                android:visibility="@{registerViewModel.busy}" />
+                android:visibility="@{registerViewModel.busy}"
+                android:indeterminateTint="@color/colorMidnightBlue"/>
 
 
         </LinearLayout>
