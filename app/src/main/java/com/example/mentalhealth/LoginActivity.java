@@ -103,19 +103,19 @@ public class LoginActivity extends AppCompatActivity {
 
                                     //REDIRECTING TO DASHBOARD
 
-                                  /*  if(userType.equals("Patient"))
+                                    if (userType.equals("Patient"))
                                     {
-                                        i = new Intent(LoginActivity.this, Patient_dashboard.class);
+                                        i = new Intent(LoginActivity.this, Patient_feed.class);
                                     }
                                     if(userType.equals("Doctor"))
                                     {
                                         i = new Intent(LoginActivity.this, Doctor_MainActivity.class);
                                     }
-                                    else
+                                   /* else
                                     {
                                         i = new Intent(LoginActivity.this, Volunteer_dashboard.class);
-                                    }
-                                    startActivity(i);*/
+                                    }*/
+                                    startActivity(i);
 
 
                                 }

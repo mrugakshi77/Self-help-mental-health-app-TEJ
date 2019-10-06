@@ -86,7 +86,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="LOGIN"
-                android:onClick="@{()-> loginViewModel.onLoginClicked()}"
                 android:textColor="#ffffff"
                 fbutton:buttonColor="@colors/colorMidnightBlue"
                 fbutton:cornerRadius="5dp"

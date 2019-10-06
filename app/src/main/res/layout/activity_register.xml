@@ -148,7 +148,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="REGISTER"
-                android:onClick="@{()-> registerViewModel.onRegisterClicked()}"
                 android:textColor="#ffffff"
                 fbutton:buttonColor="@colors/colorMidnightBlue"
                 fbutton:cornerRadius="5dp"

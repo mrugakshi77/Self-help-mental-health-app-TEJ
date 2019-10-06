@@ -10,7 +10,7 @@ public class Upload {
         this.post = "";
         this.imageUrl = "";
         this.imagePresent = true;
-        this.userName = "Reetika";
+        this.userName = "PICT_TEJ";
     }
 
 
@@ -24,7 +24,7 @@ public class Upload {
             imagePresent = true;
         this.post = post;
         this.imageUrl = imageUrl;
-        this.userName = "Reetika";
+        this.userName = "PICT_TEJ";
     }
 
     public String getPost() {
@@ -59,5 +59,3 @@ public class Upload {
         this.userName = userName;
     }
 }
-
-
