@@ -34,7 +34,8 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();;
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
 
     info.hoang8f.widget.FButton fButton;
 
@@ -55,10 +56,10 @@ public class LoginActivity extends AppCompatActivity {
         binding.setLoginViewModel(loginViewModel);
         binding.setLifecycleOwner(this);
 
-        fButton =findViewById(R.id.button);
+        fButton = findViewById(R.id.button);
         fButton.setButtonColor(getResources().getColor(R.color.colorMidnightBlue));
 
-        signup =(TextView) findViewById(R.id.signup);
+        signup = (TextView) findViewById(R.id.signup);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (user.getEmail().length() > 0 || user.getPassword().length() > 0)
                     Toast.makeText(getApplicationContext(), "email : " + user.getEmail() + " password " + user.getPassword(), Toast.LENGTH_SHORT).show();
 
-                    checkUserCredentials(user);
+                checkUserCredentials(user);
             }
         });
     }
@@ -90,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(getApplicationContext(), "Successful Sign in", Toast.LENGTH_SHORT).show();
                             final FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-                           // Intent i;
+                            // Intent i;
 
                             databaseReference.addValueEventListener(new ValueEventListener() {
 
@@ -98,29 +99,21 @@ public class LoginActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    userType = dataSnapshot.child("User").child(currentUser.getEmail().replace('.','&')).child("mType").getValue().toString();
+                                    userType = dataSnapshot.child("User").child(currentUser.getEmail().replace('.', '&')).child("mType").getValue().toString();
                                     Toast.makeText(getApplicationContext(), userType, Toast.LENGTH_SHORT).show();
 
                                     /*  REDIRECTING TO DASHBOARD*/
 
-                                    if(userType.equals("Patient"))
-                                    {
+                                    if (userType.equals("Patient")) {
                                         Intent i = new Intent(LoginActivity.this, Patient_feed.class);
                                         finish();
                                         startActivity(i);
-                                    }
-                                    else if(userType.equals("Doctor"))
-                                    {
+                                    } else if (userType.equals("Doctor")) {
                                         //i = new Intent(LoginActivity.this, Doctor_dashboard.class)
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         //i = new Intent(LoginActivity.this, Volunteer_dashboard.class)
                                     }
                                     //startActivity(i);
-
-
-
                                 }
 
                                 @Override
@@ -140,21 +133,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
         finishAffinity();
 
     }
 
 
-/////////////////////////////////////////////////////////////////
-    /*@Override
+    /////////////////////////////////////////////////////////////////
+    @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        Toast.makeText(getApplicationContext(), "User already logged in : " + currentUser.getEmail(), Toast.LENGTH_SHORT).show();
-    }*/
+
+    }
 }
 
 
