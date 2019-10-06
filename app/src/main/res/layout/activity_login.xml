@@ -22,7 +22,7 @@
             android:layout_margin="8dp"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.example.mentalhealth.CustomTextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
@@ -40,14 +40,15 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/round_button"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.example.mentalhealth.CustomTextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <com.example.mentalhealth.CustomTextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
                 app:error="@{loginViewModel.errorPassword}"
-                app:errorEnabled="true">
+                app:errorEnabled="true"
+                app:passwordToggleEnabled="true">
 
                 <EditText
                     android:id="@+id/inPassword"
@@ -61,7 +62,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/round_button"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.example.mentalhealth.CustomTextInputLayout>
 
 
             <!--<Button
@@ -108,7 +109,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
-                android:visibility="@{loginViewModel.busy}" />
+                android:visibility="@{loginViewModel.busy}"
+                android:indeterminateTint="@color/colorMidnightBlue"/>
 
 
 

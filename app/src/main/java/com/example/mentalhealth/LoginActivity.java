@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -56,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
 
         fButton =findViewById(R.id.button);
         fButton.setButtonColor(getResources().getColor(R.color.colorMidnightBlue));
-
 
         signup =(TextView) findViewById(R.id.signup);
 
@@ -139,6 +139,12 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finishAffinity();
+
+    }
 
 
 /////////////////////////////////////////////////////////////////
