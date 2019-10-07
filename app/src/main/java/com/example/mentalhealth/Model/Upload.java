@@ -5,12 +5,13 @@ public class Upload {
     private String imageUrl;
     private boolean imagePresent;
     private String userName;
+    private String userEmail;
 
     public Upload() {
         this.post = "";
         this.imageUrl = "";
         this.imagePresent = true;
-        this.userName = "PICT_TEJ";
+        this.userName = "Reetika";
     }
 
 
@@ -18,13 +19,21 @@ public class Upload {
         if (post.trim().equals("")) {
             this.post = "No name";
         }
-        if (imageUrl.trim().equals("")) {
+        if (imageUrl.isEmpty() || imageUrl.trim().equals(" ")) {
             imagePresent = false;
         } else
             imagePresent = true;
         this.post = post;
         this.imageUrl = imageUrl;
-        this.userName = "PICT_TEJ";
+        this.userName = "dummy";
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getPost() {
