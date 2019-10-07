@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mentalhealth.Adapter.PostAdapter;
 import com.example.mentalhealth.R;
-import com.example.mentalhealth.Model.Upload;
+import com.example.mentalhealth.model.Upload;
 
 import java.util.List;
 
