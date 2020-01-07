@@ -23,8 +23,7 @@ public class HomeViewModel extends ViewModel {
 
 
     private List<Upload> allPosts = new ArrayList<>();
-    private static final DatabaseReference POST_REF =
-            FirebaseDatabase.getInstance().getReference("posts");
+    private static final DatabaseReference POST_REF = FirebaseDatabase.getInstance().getReference("posts");
     private final FirebaseQueryLiveData liveData = new FirebaseQueryLiveData(POST_REF.orderByChild("userEmail").equalTo(FirebaseAuth.getInstance().getCurrentUser().getEmail()));
 
 

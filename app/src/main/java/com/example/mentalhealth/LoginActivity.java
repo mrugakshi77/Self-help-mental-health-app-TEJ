@@ -33,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-    ;
 
     info.hoang8f.widget.FButton fButton;
     private Intent i;
