@@ -14,4 +14,28 @@
         <item>Volunteer</item>
     </string-array>
 
+    <string-array name="qualification">
+        <item>M.B.B.S.</item>
+        <item>M.D.</item>
+        <item>B.A.M.S.</item>
+    </string-array>
+
+    <string-array name="specialization">
+        <item>Orthodontist</item>
+        <item>Dermatologist</item>
+        <item>Cardiologist</item>
+    </string-array>
+
+    <string-array name="marital_status">
+        <item>yes</item>
+        <item>no</item>
+    </string-array>
+
+    <string-array name="profession">
+        <item>Student</item>
+        <item>Teacher</item>
+        <item>Nurse</item>
+        <item>Engineer</item>
+    </string-array>
+
 </resources>

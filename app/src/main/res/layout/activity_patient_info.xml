@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="patientInfoViewModel"
+            type="com.example.mentalhealth.PatientInfoViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        xmlns:card_view="http://schemas.android.com/tools"
+        android:layout_margin="30dp"
+        app:cardBackgroundColor="@color/fbutton_color_midnight_blue"
+        card_view:cardElevation="10dp"
+        android:id="@+id/cardView"
+        android:layout_centerInParent="true"
+        app:cardCornerRadius="15dp">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="7dp"
+                android:orientation="vertical"
+                android:paddingBottom="20dp">
+
+
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/setDp_patient"
+                    android:layout_width="153dp"
+                    android:layout_height="83dp"
+                    android:layout_marginBottom="44dp"
+                    android:layout_marginEnd="35dp"
+                    android:layout_marginTop="80dp"
+                    android:text="Set Profile Picture"
+                    android:textColor="@color/fbutton_color_midnight_blue"
+                    fbutton:buttonColor="#ffffff"
+                    app:layout_constraintBottom_toTopOf="@+id/describe_patient"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/displayPicture_patient"
+                    app:layout_constraintTop_toBottomOf="@+id/profession"
+                    app:layout_constraintVertical_bias="0.537" />
+
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/submit_patient"
+                    android:layout_width="285dp"
+                    android:layout_height="33dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="20dp"
+                    android:onClick="@{ ()-> patientInfoViewModel.onSubmitClicked() }"
+                    android:text="Submit"
+                    android:textColor="@color/fbutton_color_midnight_blue"
+                    fbutton:buttonColor="#ffffff"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.489"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/describe_patient"
+                    app:layout_constraintVertical_bias="0.692" />
+
+                <EditText
+                    android:id="@+id/describe_patient"
+                    android:layout_width="294dp"
+                    android:layout_height="45dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:ems="10"
+                    android:gravity="center|start|top"
+                    android:hint="Descirbe Yourself"
+                    android:inputType="textMultiLine"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profession"
+                    app:layout_constraintVertical_bias="0.717" />
+
+                <ImageView
+                    android:id="@+id/displayPicture_patient"
+                    android:layout_width="108dp"
+                    android:layout_height="113dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginEnd="252dp"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintBottom_toTopOf="@+id/describe_patient"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.087"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/marital_status"
+                    app:layout_constraintVertical_bias="0.925"
+                    app:srcCompat="@drawable/ic_person_black_24dp" />
+
+                <Spinner
+                    android:id="@+id/marital_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                <Spinner
+                    android:id="@+id/profession"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/marital_status" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:text="Help us get to know YOU better!"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
+
+
+    <!--android:onClick="@{ ()-> patientInfoViewModel.onSubmitClicked() }"-->

@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -68,64 +69,10 @@ public class RegisterActivity extends AppCompatActivity {
         registerViewModel.getUser().observe(this, new Observer<User>() {
             @Override
             public void onChanged(@Nullable User user) {
-                if (user.getEmail().length() > 0 || user.getPassword().length() > 0)
-                    Toast.makeText(getApplicationContext(), "email : " + user.getEmail() + " password " + user.getPassword(), Toast.LENGTH_SHORT).show();
-
                 user.setmType(spinner.getSelectedItem().toString());
                 saveUserInformation(user);
             }
         });
-
-    }
-
-    private void register(final User user) {
-        final String mail = user.getEmail();
-        final String pass = user.getPassword();
-
-        firebaseAuth.createUserWithEmailAndPassword(mail,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-
-                    Intent i;
-
-                    Toast.makeText(getApplicationContext(), "Successful User creation", Toast.LENGTH_SHORT).show();
-
-                    Toast.makeText(getApplicationContext(), user.getmType(), Toast.LENGTH_SHORT).show();
-
-                    /* Redirecting to dashboards
-
-                    if(user.getmType().equals("Patient"))
-                    {
-                        //i = new Intent(RegisterActivity.this,patient_dashboard.class);
-                    }
-                    else if(user.getmType().equals("Doctor"))
-                    {
-                        //i = new Intent(RegisterActivity.this,doctor_dashboard.class);
-                    }
-                    else
-                    {
-                        //i = new Intent(RegisterActivity.this,volunteer_dashboard.class);
-                    }
-
-                    //startActivity(i);
-
-                   */
-
-                } else {
-
-                    if(task.getException() instanceof FirebaseAuthUserCollisionException) {
-                        Toast.makeText(getApplicationContext(), "User with this email already exists", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-
-                    }
-                }
-            }
-
-        });
-
 
     }
 
@@ -146,5 +93,68 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void register(final User user) {
+        final String mail = user.getEmail();
+        final String pass = user.getPassword();
+
+        firebaseAuth.createUserWithEmailAndPassword(mail,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+
+                    Intent i;
+
+                    Toast.makeText(getApplicationContext(), "Successful User creation", Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(getApplicationContext(), user.getmType(), Toast.LENGTH_SHORT).show();
+
+                    if(user.getmType().equals("Doctor"))
+                    {
+                        i = new Intent(getApplicationContext(), DoctorInfoActivity.class);
+                        i.getBundleExtra(user.getEmail());
+                        i.putExtra("user_type", "Doctor");
+                        Toast.makeText(getApplicationContext(), "Doc Info", Toast.LENGTH_SHORT).show();
+                        startActivity(i);
+                    }
+
+                    else if(user.getmType().equals("Patient"))
+                    {
+                        i = new Intent(getApplicationContext(), PatientInfoActivity.class);
+                        i.getBundleExtra(user.getEmail());
+                        i.putExtra("user_type", "Patient");
+                        Toast.makeText(getApplicationContext(), "Patient Info", Toast.LENGTH_SHORT).show();
+                        startActivity(i);
+                    }
+
+                    /* Redirecting to dashboards
+
+                    else if(user.getmType().equals("Doctor"))
+                    {
+                        //i = new Intent(RegisterActivity.this,doctor_dashboard.class);
+                    }
+                    else
+                    {
+                        //i = new Intent(RegisterActivity.this,volunteer_dashboard.class);
+                    }
+
+                   */
+
+                } else {
+
+                    if(task.getException() instanceof FirebaseAuthUserCollisionException) {
+                        Toast.makeText(getApplicationContext(), "User with this email already exists", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            }
+
+        });
+
+
     }
 }

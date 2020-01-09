@@ -118,6 +118,6 @@ public class RegisterViewModel extends ViewModel {
                 busy.setValue(8); //8 == View.GONE
 
             }
-        }, 3000);
+        }, 1000);
     }
 }
