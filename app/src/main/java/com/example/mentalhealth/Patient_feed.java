@@ -3,6 +3,7 @@ package com.example.mentalhealth;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.mentalhealth.patient_navbar.patient_doclist.PatientDocListFragment;
 import com.example.mentalhealth.patient_navbar.patient_home.PatientHomeFragment;
 import com.example.mentalhealth.patient_navbar.myaccount.MyAccountFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -42,6 +43,9 @@ public class Patient_feed extends AppCompatActivity {
                         break;
                     case R.id.navigation_myaccountP:
                         fragment = new MyAccountFragment();
+                        break;
+                    case R.id.navigation_appointmentsP:
+                        fragment = new PatientDocListFragment();
                         break;
                 }
                 loadFragment(fragment);

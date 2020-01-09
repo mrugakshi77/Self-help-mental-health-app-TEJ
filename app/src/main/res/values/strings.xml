@@ -5,6 +5,8 @@
     <string name="title_myaccount">My account</string>
     <string name="title_pmyaccount">My account</string>
     <string name="title_phome">Home</string>
+    <string name="title_pappointment">patient_appointment</string>
+    <string name="title_feed">Feed</string>
 
     <string-array name="type">
         <item>Patient</item>

@@ -27,9 +27,9 @@
             android:name=".RegisterActivity"
             android:windowSoftInputMode="adjustPan|stateUnchanged" />
         <activity android:name=".Patient_feed" />
-        <activity android:name=".Doctor_MainActivity">
-
-        </activity>
+        <activity
+            android:name=".Doctor_MainActivity"
+            android:windowSoftInputMode="adjustPan" />
 
     </application>
 

@@ -23,6 +23,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MyAccountFragment extends Fragment {
 
@@ -36,7 +38,14 @@ public class MyAccountFragment extends Fragment {
                 ViewModelProviders.of(this).get(MyAccountViewModel.class);
         View root = inflater.inflate(R.layout.fragment_myaccount, container, false);
         final TextView textView = root.findViewById(R.id.Username);
+       // TextView test = root.findViewById(R.id.firestoretest);
         Button logOut = root.findViewById(R.id.LogOut);
+
+        FirebaseFirestore firebaseFirestore= FirebaseFirestore.getInstance();
+        CollectionReference collectionReference = firebaseFirestore.collection("freeslots");
+
+
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         final FirebaseUser curruser = firebaseAuth.getCurrentUser();
