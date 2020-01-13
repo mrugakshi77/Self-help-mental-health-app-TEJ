@@ -14,10 +14,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        xmlns:card_view="http://schemas.android.com/tools"
         android:layout_margin="30dp"
         app:cardBackgroundColor="@color/fbutton_color_midnight_blue"
-        card_view:cardElevation="10dp"
+        fbutton:cardElevation="10dp"
         android:id="@+id/cardView"
         android:layout_centerInParent="true"
         app:cardCornerRadius="15dp">
@@ -41,16 +40,17 @@
                     android:layout_height="83dp"
                     android:layout_marginBottom="44dp"
                     android:layout_marginEnd="35dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="80dp"
                     android:text="Set Profile Picture"
                     android:textColor="@color/fbutton_color_midnight_blue"
-                    fbutton:buttonColor="#ffffff"
                     app:layout_constraintBottom_toTopOf="@+id/describe_doctor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/displayPicture_doctor"
                     app:layout_constraintTop_toBottomOf="@+id/specialization"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="0.0"
+                    fbutton:buttonColor="#ffffff" />
 
                 <info.hoang8f.widget.FButton
                     android:id="@+id/submit_doctor"

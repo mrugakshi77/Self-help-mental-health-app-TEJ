@@ -31,7 +31,7 @@ public class QuestionnaireAdapter extends RecyclerView.Adapter<QuestionnaireAdap
             "13. I am restless and cant keep still.",
             "14. I feel hopeful about the future.",
             "15. I am more irritable than usual.",
-            "16. I find it easy to ma decisions.",
+            "16. I find it easy to make decisions.",
             "17. I feel that I am useful and needed.",
             "18. My life is pretty full.",
             "19. I feel that others would be better off if I were dead.",
@@ -46,13 +46,19 @@ public class QuestionnaireAdapter extends RecyclerView.Adapter<QuestionnaireAdap
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.question_card, parent, false);
 
+        QuestionnaireAdapter.QuestionnaireHolder vh = new QuestionnaireAdapter.QuestionnaireHolder(itemView);
+
+
+        return vh;
+
+    }
+
+    public QuestionnaireAdapter() {
+
         for(int i=0;i<20;i++)
         {
             obj.add(questions[i]);
         }
-
-        return new QuestionnaireHolder(itemView);
-
     }
 
     @Override

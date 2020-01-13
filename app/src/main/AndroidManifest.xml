@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mentalhealth">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -30,6 +31,9 @@
         <activity android:name=".Patient_feed" />
         <activity
             android:name=".Doctor_MainActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Questionnaire"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".DoctorInfoActivity"

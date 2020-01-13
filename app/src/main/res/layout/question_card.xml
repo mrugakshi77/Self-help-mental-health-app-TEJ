@@ -19,11 +19,11 @@
         <TextView
             android:id="@+id/question"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
             android:background="#0FFFFFFF"
             android:clickable="false"
-            android:gravity="center"
+            android:gravity="left"
             android:text="TextView"
             android:textColor="@color/fbutton_color_midnight_blue"
             android:textStyle="bold" />
