@@ -5,20 +5,16 @@ import android.util.Log;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import javax.annotation.Nullable;
 
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 
-public class FirestoreQueryLiveData extends LiveData<QuerySnapshot> {
+public class FirestoreQueryLiveData {
 
-    private static final String LOG_TAG = "FirestoreQueryLiveData";
+/*    private static final String LOG_TAG = "FirestoreQueryLiveData";
 
     private final Query query;
     private final MyValueEventListener1 listener = new MyValueEventListener1();
@@ -49,5 +45,5 @@ public class FirestoreQueryLiveData extends LiveData<QuerySnapshot> {
         public void onEvent(@Nullable QuerySnapshot querySnapshot, @Nullable FirebaseFirestoreException e) {
             setValue(querySnapshot);
         }
-    }
+    }*/
 }

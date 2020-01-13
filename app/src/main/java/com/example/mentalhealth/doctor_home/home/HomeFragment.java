@@ -1,4 +1,4 @@
-package com.example.mentalhealth.ui.home;
+package com.example.mentalhealth.doctor_home.home;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -17,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mentalhealth.Adapter.PostAdapter;
 import com.example.mentalhealth.Model.Upload;
 import com.example.mentalhealth.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -25,12 +28,13 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private RecyclerView recyclerView;
+    private FloatingActionButton addPostButton;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
 
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        View root = inflater.inflate(R.layout.fragment_dochome, container, false);
         recyclerView = root.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
@@ -49,7 +53,18 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
+        addPostButton = root.findViewById(R.id.addPost_fabButton);
+        addPostButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                AddPostFragment addPostFragment = new AddPostFragment();
+                transaction.add(R.id.nav_host_fragment, addPostFragment);
+                transaction.replace(R.id.nav_host_fragment, addPostFragment);
+                transaction.commit();
+            }
+        });
         return root;
     }
 }

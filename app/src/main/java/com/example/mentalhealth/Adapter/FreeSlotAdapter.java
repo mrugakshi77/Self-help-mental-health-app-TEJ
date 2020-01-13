@@ -1,5 +1,6 @@
 package com.example.mentalhealth.Adapter;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,12 +28,15 @@ import java.util.List;
 import java.util.Map;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class FreeSlotAdapter extends RecyclerView.Adapter<FreeSlotAdapter.FreeSlotHolder> {
 
 
     private List<FreeSlot> freeSlotList = new ArrayList<FreeSlot>();
+
+
     @NonNull
     @Override
     public FreeSlotHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -71,7 +75,7 @@ public class FreeSlotAdapter extends RecyclerView.Adapter<FreeSlotAdapter.FreeSl
                     });
 
                     //add to appointments
-                    Appointment appointment = new Appointment(currentFreeSlot, FirebaseAuth.getInstance().getCurrentUser().getEmail().toString());
+                    Appointment appointment = new Appointment(currentFreeSlot, FirebaseAuth.getInstance().getCurrentUser().getEmail().toString(), String.valueOf(1));
                     DatabaseReference dbref_appt = FirebaseDatabase.getInstance().getReference("Appointments").push();
                     dbref_appt.setValue(appointment).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -91,12 +95,12 @@ public class FreeSlotAdapter extends RecyclerView.Adapter<FreeSlotAdapter.FreeSl
         return freeSlotList.size();
     }
 
-    public void setFreeSlots(List<FreeSlot> allFreeSlots){
+    public void setFreeSlots(List<FreeSlot> allFreeSlots) {
         this.freeSlotList = allFreeSlots;
         notifyDataSetChanged();
     }
 
-    class FreeSlotHolder extends RecyclerView.ViewHolder{
+    class FreeSlotHolder extends RecyclerView.ViewHolder {
 
         private TextView tv_date;
         private TextView tv_time;

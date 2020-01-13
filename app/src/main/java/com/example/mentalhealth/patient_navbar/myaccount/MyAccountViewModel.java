@@ -4,9 +4,7 @@ import com.example.mentalhealth.FirestoreQueryLiveData;
 import com.example.mentalhealth.Model.FreeSlot;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 
 import java.util.List;
 
@@ -16,13 +14,13 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class MyAccountViewModel extends ViewModel {
-    private FreeSlot freeSlottest = new FreeSlot();
+    // private FreeSlot freeSlottest = new FreeSlot((FreeSlot) appointment);
     private MutableLiveData<String> mText;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
 
-    private CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("freeslots");
-    private FirestoreQueryLiveData livedata = new FirestoreQueryLiveData(collectionReference);
+    // private CollectionReference collectionReference = FirebaseFirestore.getInstance().collection("freeslots");
+    // private FirestoreQueryLiveData livedata = new FirestoreQueryLiveData(collectionReference);
    /* public LiveData<List<FreeSlot>> getLiveData(){
       //  LiveData<List<FreeSlot>> freeslotsLiveData = Transformations.map(livedata, new Deserializer());
         return freeslotsLiveData;
@@ -41,7 +39,7 @@ public class MyAccountViewModel extends ViewModel {
 
 
     }
-    private class Deserializer implements Function<DocumentSnapshot, List<FreeSlot>> {
+  /*  private class Deserializer implements Function<DocumentSnapshot, List<FreeSlot>> {
 
         @Override
         public List<FreeSlot> apply(DocumentSnapshot input) {
@@ -49,6 +47,6 @@ public class MyAccountViewModel extends ViewModel {
           //  for(DocumentSnapshot ds : input.getClass())
             return null;
         }
-    }
+    }*/
 
 }

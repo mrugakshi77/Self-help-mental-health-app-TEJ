@@ -1,6 +1,6 @@
 package com.example.mentalhealth.Model;
 
-import com.google.firebase.Timestamp;
+
 
 public class FreeSlot {
 
@@ -11,12 +11,15 @@ public class FreeSlot {
     protected String time;
     protected String slotId;
 
-    public FreeSlot(){
+    public FreeSlot(FreeSlot appointment) {
         doctorEmail="";
         location="";
         date="";
         time="";
         slotId="";
+    }
+
+    public FreeSlot() {
     }
 
     public void setFromOther(FreeSlot other) {
@@ -26,6 +29,15 @@ public class FreeSlot {
         this.date = other.date;
         this.time = other.time;
         this.slotId = other.slotId;
+    }
+
+    public FreeSlot(String doctorEmail, String location, Boolean statusBooked, String date, String time, String slotId) {
+        this.doctorEmail = doctorEmail;
+        this.location = location;
+        this.statusBooked = statusBooked;
+        this.date = date;
+        this.time = time;
+        this.slotId = slotId;
     }
 
     public String getDoctorEmail() {

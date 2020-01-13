@@ -1,4 +1,4 @@
-package com.example.mentalhealth.ui.dashboard;
+package com.example.mentalhealth.doctor_home.home;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -16,8 +16,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -45,10 +45,8 @@ import com.squareup.picasso.Picasso;
 import static android.app.Activity.RESULT_OK;
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-//Doctor Add Post fragment. Add text and images from local device to firebase.
-public class DashboardFragment extends Fragment {
-
-    private DashboardViewModel dashboardViewModel;
+public class AddPostFragment extends Fragment {
+    private AddPostViewModel addPostViewModel;
     private StorageReference storageReference;
     private static int PICK_IMAGE_REQUEST = 1;
 
@@ -69,8 +67,8 @@ public class DashboardFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel = ViewModelProviders.of(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        addPostViewModel = ViewModelProviders.of(this).get(AddPostViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_docaddpost, container, false);
         editText = root.findViewById(R.id.edit_box);
         chooseFileButton = root.findViewById(R.id.choose_button);
         uploadButton = root.findViewById(R.id.upload_button);
@@ -186,7 +184,7 @@ public class DashboardFragment extends Fragment {
                             }
                         });
                         //upload.setUserName(uname);
-                       // uploadKey = databaseReference.push().getKey();
+                        // uploadKey = databaseReference.push().getKey();
                         //databaseReference.child(uploadKey).setValue(upload);
 
                     }
@@ -196,11 +194,12 @@ public class DashboardFragment extends Fragment {
         } else
             Toast.makeText(getContext(), "No file selected", Toast.LENGTH_SHORT).show();
     }
-    private void uploadPost(Upload u, String s){
+
+    private void uploadPost(Upload u, String s) {
         uname = s;
-        Log.e("String",""+s+"uname: "+uname);
+        Log.e("String", "" + s + "uname: " + uname);
         u.setUserName(uname);
-        Log.e("Striing", ""+u.getUserName()+"imageuri"+u.getImageUrl());
+        Log.e("Striing", "" + u.getUserName() + "imageuri" + u.getImageUrl());
         u.setUserEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         uploadKey = databaseReference.push().getKey();
         databaseReference.child(uploadKey).setValue(u);
@@ -218,6 +217,5 @@ public class DashboardFragment extends Fragment {
 
 
     }*/
-
 
 }
