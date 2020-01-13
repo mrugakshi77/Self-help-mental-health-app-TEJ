@@ -105,7 +105,7 @@ public class PatientInfoActivity extends AppCompatActivity {
 
     private void redirect(FirebaseUser curr_user) {
 
-        Intent i = new Intent(PatientInfoActivity.this, Patient_feed.class);
+        Intent i = new Intent(PatientInfoActivity.this, Questionnaire.class);
         startActivity(i);
     }
 }
