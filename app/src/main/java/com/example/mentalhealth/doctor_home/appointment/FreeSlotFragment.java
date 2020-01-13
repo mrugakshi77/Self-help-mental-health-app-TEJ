@@ -48,7 +48,7 @@ public class FreeSlotFragment extends Fragment {
 
         //patientFreeSlotsViewModel = ViewModelProviders.of(this).get(PatientFreeSlotsViewModel.class);
         //Log.e("testfs2",""+getArguments().getString("docEmail"));
-        freeSlotViewModel.setDocEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString());
+        freeSlotViewModel.setDocEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         freeSlotViewModel.setFreeSlotData();
         LiveData<List<FreeSlot>> mylivedata = freeSlotViewModel.getFreeSlots();
 
