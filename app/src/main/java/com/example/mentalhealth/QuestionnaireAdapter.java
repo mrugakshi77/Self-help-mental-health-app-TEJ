@@ -3,6 +3,8 @@ package com.example.mentalhealth;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import java.util.List;
 public class QuestionnaireAdapter extends RecyclerView.Adapter<QuestionnaireAdapter.QuestionnaireHolder>  {
 
     List<String> obj = new ArrayList<>();
+    int[] values = new int[20];
 
     String questions[] = {
             "1. I feel down-hearted and blue.",
@@ -46,8 +49,8 @@ public class QuestionnaireAdapter extends RecyclerView.Adapter<QuestionnaireAdap
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.question_card, parent, false);
 
-        QuestionnaireAdapter.QuestionnaireHolder vh = new QuestionnaireAdapter.QuestionnaireHolder(itemView);
 
+        QuestionnaireAdapter.QuestionnaireHolder vh = new QuestionnaireAdapter.QuestionnaireHolder(itemView);
 
         return vh;
 
@@ -65,6 +68,29 @@ public class QuestionnaireAdapter extends RecyclerView.Adapter<QuestionnaireAdap
     public void onBindViewHolder(@NonNull QuestionnaireHolder holder, int position) {
 
         holder.question.setText(obj.get(position));
+        int radioButtonID = holder.radioGroup.getCheckedRadioButtonId();
+        View radioB = holder.radioGroup.findViewById(radioButtonID);
+        int rb_num = holder.radioGroup.indexOfChild(radioB);
+
+        /*int pos = position+1;
+        1,3,4,7,8,9,10,13,15,19
+        if(pos==1 || pos==3 || pos==4 || pos==7 || pos==8 ||pos==9 ||  pos==10 || pos==113 || pos==15 || pos==1)
+        {
+            values[position] = 10+radioButtonID;
+        }
+        else
+        {
+            if(radioButtonID==1)
+                values[position] = 10+4;
+            else if(radioButtonID==2)
+                values[position] = 10+3;
+            else if(radioButtonID==3)
+                values[position] = 10+2;
+            else if(radioButtonID==4)
+                values[position] = 10+1;
+        }*/
+
+        values[position]=11+rb_num;
     }
 
     @Override
@@ -72,14 +98,21 @@ public class QuestionnaireAdapter extends RecyclerView.Adapter<QuestionnaireAdap
         return obj.size();
     }
 
+    public int[] getSelectedOptions() {
+
+        return values;
+    }
+
     public class QuestionnaireHolder extends RecyclerView.ViewHolder {
 
         TextView question;
+        RadioGroup radioGroup;
 
         public QuestionnaireHolder(@NonNull View itemView) {
             super(itemView);
 
             question = itemView.findViewById(R.id.question);
+            radioGroup = itemView.findViewById(R.id.radioGroup);
         }
     }
 }
