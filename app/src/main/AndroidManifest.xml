@@ -38,6 +38,7 @@
         <activity
             android:name=".DoctorInfoActivity"
             android:theme="@style/Theme.AppCompat.Dialog" />
+
     </application>
 
 </manifest>

@@ -4,6 +4,11 @@
     <item
         android:id="@+id/navigation_homeP"
         android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_feed" />
+
+    <item
+        android:id="@+id/navigation_appointmentsP"
+        android:icon="@android:drawable/ic_input_get"
         android:title="@string/title_home" />
 
 

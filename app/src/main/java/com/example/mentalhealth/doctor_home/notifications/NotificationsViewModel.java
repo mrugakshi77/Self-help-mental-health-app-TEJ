@@ -1,4 +1,4 @@
-package com.example.mentalhealth.ui.notifications;
+package com.example.mentalhealth.doctor_home.notifications;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

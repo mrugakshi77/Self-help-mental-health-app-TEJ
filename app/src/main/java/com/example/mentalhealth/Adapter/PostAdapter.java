@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mentalhealth.model.Upload;
+import com.example.mentalhealth.Model.Upload;
 import com.example.mentalhealth.R;
 import com.squareup.picasso.Picasso;
 

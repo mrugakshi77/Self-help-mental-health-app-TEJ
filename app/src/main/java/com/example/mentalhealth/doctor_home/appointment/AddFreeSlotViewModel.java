@@ -1,14 +1,13 @@
-package com.example.mentalhealth.ui.dashboard;
+package com.example.mentalhealth.doctor_home.appointment;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
-
+public class AddFreeSlotViewModel extends ViewModel {
     private MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public AddFreeSlotViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is dashboard fragment");
     }

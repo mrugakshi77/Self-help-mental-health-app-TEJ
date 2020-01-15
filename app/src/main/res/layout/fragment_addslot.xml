@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_addFreeSlot"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date : "
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="50dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/appointment_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Appointment Date"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="130dp"
+            android:textSize="20sp"
+            android:drawableRight="@drawable/ic_event_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time : "
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="50dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/appointment_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Appointment Time"
+            android:layout_marginTop="200dp"
+            android:layout_marginLeft="130dp"
+            android:textSize="20sp"
+            android:drawableRight="@drawable/ic_alarm_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location : "
+            android:layout_marginTop="250dp"
+            android:layout_marginLeft="50dp"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/appointment_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp"
+            android:layout_marginLeft="150dp"
+            android:textSize="20sp"
+            android:hint="Address of location"
+            android:inputType="textMultiLine"
+            android:maxLines="5" />
+
+        <Button
+            android:id="@+id/add_to_db_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:layout_marginTop="340dp"
+            android:layout_gravity="center_horizontal" />
+    </FrameLayout>
+
+
+</LinearLayout>

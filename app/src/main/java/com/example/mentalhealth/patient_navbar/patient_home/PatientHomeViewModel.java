@@ -1,7 +1,7 @@
 package com.example.mentalhealth.patient_navbar.patient_home;
 
 import com.example.mentalhealth.FirebaseQueryLiveData;
-import com.example.mentalhealth.model.Upload;
+import com.example.mentalhealth.Model.Upload;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -11,7 +11,6 @@ import java.util.List;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 

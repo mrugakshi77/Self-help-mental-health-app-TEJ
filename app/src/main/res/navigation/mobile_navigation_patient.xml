@@ -11,6 +11,12 @@
         android:label="@string/title_phome"
         tools:layout="@layout/fragment_patienthome" />
 
+    <fragment
+        android:id="@+id/navigation_appointmentsP"
+        android:name="com.example.mentalhealth.patient_navbar.patient_doclist.PatientDocListFragment"
+        android:label="@string/title_pappointment"
+        tools:layout="@layout/fragment_patientappointment" />
+
 
     <fragment
         android:id="@+id/navigation_myaccountP"
