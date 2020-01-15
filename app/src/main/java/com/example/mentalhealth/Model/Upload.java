@@ -1,4 +1,4 @@
-package com.example.mentalhealth.model;
+package com.example.mentalhealth.Model;
 
 public class Upload {
     private String post;

@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable User user) {
                 if (user.getEmail().length() > 0 || user.getPassword().length() > 0)
-                    Toast.makeText(getApplicationContext(), "email : " + user.getEmail() + " password " + user.getPassword(), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getApplicationContext(), "email : " + user.getEmail() + " password " + user.getPassword(), Toast.LENGTH_SHORT).show();
 
                     checkUserCredentials(user);
             }
@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     userType = dataSnapshot.child("User").child(currentUser.getEmail().replace('.', '&')).child("mType").getValue().toString();
-                                    Toast.makeText(getApplicationContext(), userType, Toast.LENGTH_SHORT).show();
+                                   // Toast.makeText(getApplicationContext(), userType, Toast.LENGTH_SHORT).show();
 
                                     //REDIRECTING TO DASHBOARD
 

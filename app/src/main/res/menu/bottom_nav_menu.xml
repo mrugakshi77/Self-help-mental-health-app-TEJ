@@ -7,9 +7,9 @@
         android:title="Feed" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_add_circle_black_24dp"
-        android:title="Add Post" />
+        android:id="@+id/navigation_appointmentsD"
+        android:icon="@drawable/ic_date_range_black_24dp"
+        android:title="Appointments" />
 
     <item
         android:id="@+id/navigation_notifications"
