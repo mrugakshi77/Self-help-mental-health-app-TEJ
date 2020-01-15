@@ -65,33 +65,45 @@ public class QuestionnaireAdapter extends RecyclerView.Adapter<QuestionnaireAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull QuestionnaireHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final QuestionnaireHolder holder, final int position) {
 
         holder.question.setText(obj.get(position));
-        int radioButtonID = holder.radioGroup.getCheckedRadioButtonId();
+        final int radioButtonID = holder.radioGroup.getCheckedRadioButtonId();
         View radioB = holder.radioGroup.findViewById(radioButtonID);
-        int rb_num = holder.radioGroup.indexOfChild(radioB);
+        final int rb_num = holder.radioGroup.indexOfChild(radioB);
 
-        /*int pos = position+1;
-        1,3,4,7,8,9,10,13,15,19
-        if(pos==1 || pos==3 || pos==4 || pos==7 || pos==8 ||pos==9 ||  pos==10 || pos==113 || pos==15 || pos==1)
-        {
-            values[position] = 10+radioButtonID;
-        }
-        else
-        {
-            if(radioButtonID==1)
-                values[position] = 10+4;
-            else if(radioButtonID==2)
-                values[position] = 10+3;
-            else if(radioButtonID==3)
-                values[position] = 10+2;
-            else if(radioButtonID==4)
-                values[position] = 10+1;
-        }*/
+        //values[position]=11+rb_num;
 
-        values[position]=11+rb_num;
+    /*int pos = position+1;
+    1,3,4,7,8,9,10,13,15,19
+    if(pos==1 || pos==3 || pos==4 || pos==7 || pos==8 ||pos==9 ||  pos==10 || pos==113 || pos==15 || pos==1)
+    {
+        values[position] = 10+radioButtonID;
     }
+    else
+    {
+        if(radioButtonID==1)
+            values[position] = 10+4;
+        else if(radioButtonID==2)
+            values[position] = 10+3;
+        else if(radioButtonID==3)
+            values[position] = 10+2;
+        else if(radioButtonID==4)
+            values[position] = 10+1;
+    }*/
+
+        holder.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                View radioB = holder.radioGroup.findViewById(i);
+                final int rb_num = holder.radioGroup.indexOfChild(radioB);
+                values[position]=11+rb_num;
+            }
+        });
+    }
+
 
     @Override
     public int getItemCount() {

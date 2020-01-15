@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -115,15 +116,32 @@ public class Questionnaire extends AppCompatActivity {
 
                 int[] selected_values = questionnaireAdapter.getSelectedOptions();
 
-                String str1 = "Selected values for Ques 2 is - " +selected_values[1];
-                String str2 = "Selected values for Ques 3 is - " +selected_values[2];
-                String str3 = "Selected values for Ques 4 is - " +selected_values[3];
-                String str4 = "Selected values for Ques 5 is - " +selected_values[4];
+                int flag=0;
 
-                Log.d("VALUES:", str1);
-                Log.d("VALUES:", str2);
-                Log.d("VALUES:", str3);
-                Log.d("VALUES:", str4);
+                for(int i=0;i<20;i++)
+                {
+                    if(selected_values[i]==0)
+                    {
+                        flag=1;
+                    }
+                }
+                if(flag==1)
+                {
+                    Toast.makeText(getApplicationContext(), "You haven't answered all questions!!", Toast.LENGTH_LONG).show();
+                }
+
+                String[] str = new String[20];
+
+                for(int i=0;i<20;i++)
+                {
+                    str[i] = "Selected values for Ques" + (i+1) + "  is - " + selected_values[i];
+                }
+
+                for(int i=0;i<20;i++)
+                {
+                    Log.d("Values", str[i]);
+                }
+
 
 
                 FirebaseModelInputs inputs = null;
@@ -181,8 +199,11 @@ public class Questionnaire extends AppCompatActivity {
 
                 //Toast.makeText(getApplicationContext(), selected_values[1], Toast.LENGTH_LONG).show();
 
-                Intent i = new Intent(Questionnaire.this, Patient_feed.class);
-                startActivity(i);
+                if(flag==0){
+                    Intent i = new Intent(Questionnaire.this, Patient_feed.class);
+                    startActivity(i);
+                }
+
             }
         });
 
