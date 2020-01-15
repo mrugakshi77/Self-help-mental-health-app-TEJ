@@ -41,4 +41,10 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
     implementation 'androidx.navigation:navigation-ui:2.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    apply plugin: 'com.android.application'
+    apply plugin: 'com.google.gms.google-services'
+
+    implementation 'com.google.firebase:firebase-ml-model-interpreter:22.0.1'
+
 }
