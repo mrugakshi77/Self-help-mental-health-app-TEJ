@@ -99,7 +99,7 @@ public class QuestionnaireAdapter extends RecyclerView.Adapter<QuestionnaireAdap
 
                 View radioB = holder.radioGroup.findViewById(i);
                 final int rb_num = holder.radioGroup.indexOfChild(radioB);
-                values[position]=11+rb_num;
+                values[position]=1+rb_num;
             }
         });
     }

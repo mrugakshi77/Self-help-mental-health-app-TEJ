@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import org.tensorflow.lite.Interpreter;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
@@ -46,6 +47,9 @@ public class Questionnaire extends AppCompatActivity {
     RadioGroup rg;
     FirebaseModelInputOutputOptions inputOutputOptions;
     FirebaseModelInterpreter interpreter;
+
+
+    
 
 
     @Override
