@@ -41,6 +41,8 @@ public class Questionnaire extends AppCompatActivity {
     private RecyclerView recyclerView;
     private QuestionnaireAdapter questionnaireAdapter;
     RadioGroup rg;
+    FirebaseModelInputOutputOptions inputOutputOptions;
+
 
 
     @Override
@@ -89,7 +91,7 @@ public class Questionnaire extends AppCompatActivity {
                     }
                 });
 
-        final FirebaseModelInputOutputOptions inputOutputOptions;
+
         try {
             inputOutputOptions = new FirebaseModelInputOutputOptions.Builder()
                     .setInputFormat(0, FirebaseModelDataType.FLOAT32, new int[]{1,20})
