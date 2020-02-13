@@ -1,6 +1,7 @@
 package com.example.mentalhealth.doctor_home.appointment;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -42,6 +44,7 @@ public class AppointmentFragment extends Fragment {
     private RecyclerView recyclerView;
     private CardView appointmentCardView;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         appointmentViewModel =
@@ -58,6 +61,7 @@ public class AppointmentFragment extends Fragment {
         final AppointmentAdapter adapter = new AppointmentAdapter();
         adapter.setFragmentManager(getFragmentManager());
         recyclerView.setAdapter(adapter);
+
 
         appointmentViewModel = ViewModelProviders.of(this).get(AppointmentViewModel.class);
         LiveData<List<Appointment>> myLiveData = appointmentViewModel.getAppointmentsLiveData();

@@ -51,7 +51,10 @@ public class PatientFreeSlotsViewModel extends ViewModel {
             for (DataSnapshot ds : input.getChildren()) {
                 FreeSlot freeSlot = ds.getValue(FreeSlot.class);
                 Log.e("testfs4",""+freeSlot.getDate().toString());
-                allFreeSlots.add(freeSlot);
+                if (freeSlot.getStatusBooked() == false) {
+                    allFreeSlots.add(freeSlot);
+                }
+
             }
             return allFreeSlots;
         }

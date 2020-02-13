@@ -36,6 +36,9 @@
             android:name=".Questionnaire"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".DepressionTest"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".DoctorInfoActivity"
             android:theme="@style/Theme.AppCompat.Dialog" />
 

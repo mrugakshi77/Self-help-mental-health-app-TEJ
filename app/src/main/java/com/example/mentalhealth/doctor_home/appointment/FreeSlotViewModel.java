@@ -1,5 +1,6 @@
 package com.example.mentalhealth.doctor_home.appointment;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
 import androidx.arch.core.util.Function;
@@ -14,6 +15,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,8 @@ public class FreeSlotViewModel extends ViewModel {
     private String docEmail = "";
     private DatabaseReference FREESLOTS_REF;
     private FirebaseQueryLiveData liveData;
+    @SuppressLint("NewApi")
+    final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/M/yyyy");
 
     public String getDocEmail() {
         return docEmail;
@@ -45,6 +50,7 @@ public class FreeSlotViewModel extends ViewModel {
 
     private class Deserializer implements Function<DataSnapshot, List<FreeSlot>> {
 
+        @SuppressLint("NewApi")
         @Override
         public List<FreeSlot> apply(DataSnapshot input) {
 
@@ -52,7 +58,10 @@ public class FreeSlotViewModel extends ViewModel {
             for (DataSnapshot ds : input.getChildren()) {
                 FreeSlot freeSlot = ds.getValue(FreeSlot.class);
                 Log.e("testfs4", "" + freeSlot.getDate().toString());
-                allFreeSlots.add(freeSlot);
+                if (((LocalDate.now().isBefore(LocalDate.parse(freeSlot.getDate(), formatter)))
+                        || (LocalDate.now().equals(LocalDate.parse(freeSlot.getDate(), formatter)))) && freeSlot.getStatusBooked() == false) {
+                    allFreeSlots.add(freeSlot);
+                }
             }
             return allFreeSlots;
         }

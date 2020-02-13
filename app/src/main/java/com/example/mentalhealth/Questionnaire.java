@@ -1,12 +1,14 @@
 package com.example.mentalhealth;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import org.tensorflow.lite.Interpreter;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
@@ -20,6 +22,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.ml.common.FirebaseMLException;
 import com.google.firebase.ml.common.modeldownload.FirebaseModelDownloadConditions;
 import com.google.firebase.ml.common.modeldownload.FirebaseModelManager;
+import com.google.firebase.ml.common.modeldownload.FirebaseRemoteModel;
+import com.google.firebase.ml.custom.FirebaseCustomLocalModel;
 import com.google.firebase.ml.custom.FirebaseCustomRemoteModel;
 import com.google.firebase.ml.custom.FirebaseModelDataType;
 import com.google.firebase.ml.custom.FirebaseModelInputOutputOptions;
@@ -42,7 +46,10 @@ public class Questionnaire extends AppCompatActivity {
     private QuestionnaireAdapter questionnaireAdapter;
     RadioGroup rg;
     FirebaseModelInputOutputOptions inputOutputOptions;
+    FirebaseModelInterpreter interpreter;
 
+
+    
 
 
     @Override
@@ -50,8 +57,22 @@ public class Questionnaire extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionnaire);
 
+
         final FirebaseCustomRemoteModel remoteModel =
                 new FirebaseCustomRemoteModel.Builder("Questionnaire").build();
+
+        final FirebaseCustomLocalModel localModel = new FirebaseCustomLocalModel.Builder()
+                .setAssetFilePath("model.tflite")
+                .build();
+
+
+        try {
+            FirebaseModelInterpreterOptions options =
+                    new FirebaseModelInterpreterOptions.Builder(localModel).build();
+            interpreter = FirebaseModelInterpreter.getInstance(options);
+        } catch (FirebaseMLException e) {
+            // ...
+        }
 
         FirebaseModelDownloadConditions conditions = new FirebaseModelDownloadConditions.Builder()
                 .requireWifi()
@@ -69,9 +90,11 @@ public class Questionnaire extends AppCompatActivity {
                     @Override
                     public void onSuccess(Boolean isDownloaded) {
                         FirebaseModelInterpreterOptions options;
-                        //if (isDownloaded) {
+                        if (isDownloaded) {
                             options = new FirebaseModelInterpreterOptions.Builder(remoteModel).build();
-                        //}
+                        } else {
+                            options = new FirebaseModelInterpreterOptions.Builder(localModel).build();
+                        }
                         try {
                             FirebaseModelInterpreter interpreter = FirebaseModelInterpreter.getInstance(options);
                         } catch (FirebaseMLException e) {
@@ -161,7 +184,7 @@ public class Questionnaire extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                firebaseInterpreter.run(inputs, inputOutputOptions)
+                interpreter.run(inputs, inputOutputOptions)
                         .addOnSuccessListener(
                                 new OnSuccessListener<FirebaseModelOutputs>() {
                                     @Override
@@ -184,7 +207,7 @@ public class Questionnaire extends AppCompatActivity {
                                             } catch (IOException e) {
                                                 e.printStackTrace();
                                             }
-                                            Log.i("MLKit", String.format("%s: %1.4f", label, probabilities[i]));
+                                            Log.d("MLKit", String.format("%s: %1.4f", label, probabilities[i]));
                                         }
 
                                     }
