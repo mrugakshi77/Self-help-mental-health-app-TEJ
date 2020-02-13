@@ -75,8 +75,8 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     @Override
     public void onBindViewHolder(@NonNull AppointmentHolder holder, int position) {
         final Appointment appointment = appointments.get(position);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/M/yyyy");
-        if (LocalDate.now().equals(LocalDate.parse(appointment.getDate(), formatter))) {
+        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/M/yyyy");
+
             holder.appointment_patientName.setText("Patient : " + appointment.getPatientEmail());
             holder.appointment_time.setText("Appointment Time: " + appointment.getTime());
             holder.appointment__visitNumber.setText("Visit Number: " + String.valueOf(appointment.getVisitNumber()));
@@ -110,7 +110,6 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
             });
         }
 
-    }
 
     @Override
     public int getItemCount() {

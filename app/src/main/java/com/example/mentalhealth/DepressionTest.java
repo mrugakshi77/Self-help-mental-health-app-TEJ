@@ -56,7 +56,7 @@ public class DepressionTest extends AppCompatActivity {
         setContentView(R.layout.activity_questionnaire);
 
 
-        rg = (RadioGroup)findViewById(R.id.radioGroup);
+        rg = (RadioGroup) findViewById(R.id.radioGroup);
         fButton = findViewById(R.id.ques_submit);
         recyclerView = findViewById(R.id.question_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -108,7 +108,7 @@ public class DepressionTest extends AppCompatActivity {
                 }
 
                 try {
-                //FirebaseModelInputOutputOptions inputOutputOptions = createInputOutputOptions();
+                    //FirebaseModelInputOutputOptions inputOutputOptions = createInputOutputOptions();
                     runInference(selected_values);
                     Log.d("MLKit", String.format("%s: %f", "print", probabilities[0]));
 
@@ -120,7 +120,7 @@ public class DepressionTest extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                if(flag==0){
+                if (flag == 0) {
                     Intent i = new Intent(DepressionTest.this, Patient_feed.class);
                     startActivity(i);
                 }
@@ -153,7 +153,7 @@ public class DepressionTest extends AppCompatActivity {
         // [END mlkit_model_download_task]
     }
 
-    private FirebaseCustomLocalModel configureLocalModelSource() throws FirebaseMLException{
+    private FirebaseCustomLocalModel configureLocalModelSource() throws FirebaseMLException {
         // [START mlkit_local_model_source]
         FirebaseCustomLocalModel localModel = new FirebaseCustomLocalModel.Builder()
                 .setAssetFilePath("model.tflite")
@@ -229,7 +229,7 @@ public class DepressionTest extends AppCompatActivity {
         //FirebaseModelInterpreter firebaseInterpreter = createInterpreter(this.localModel);
         float[][] input = new float[1][20];
 
-        for(int i=0; i<20; i+=1) {
+        for (int i = 0; i < 20; i += 1) {
             input[0][i] = selected_values[i];
         }
 
@@ -267,24 +267,21 @@ public class DepressionTest extends AppCompatActivity {
                                 System.out.println(probabilities[3]);
 
                                 float max = 0;
-                                int index =0;
+                                int index = 0;
 
-                                for(int i=0;i<4; i++)
-                                {
-                                    if(probabilities[i]> max)
-                                    {
-                                        max= probabilities[i];
+                                for (int i = 0; i < 4; i++) {
+                                    if (probabilities[i] > max) {
+                                        max = probabilities[i];
                                         index = i;
                                     }
                                 }
 
                                 String label = "";
                                 try {
-                                        BufferedReader reader = new BufferedReader(
+                                    BufferedReader reader = new BufferedReader(
                                             new InputStreamReader(getAssets().open("labels.txt")));
 
-                                    for(int i=0;i<=index;i++)
-                                    {
+                                    for (int i = 0; i <= index; i++) {
                                         label = reader.readLine();
                                     }
 

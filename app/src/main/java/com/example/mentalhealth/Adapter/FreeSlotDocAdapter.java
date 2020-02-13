@@ -74,9 +74,10 @@ public class FreeSlotDocAdapter extends RecyclerView.Adapter<FreeSlotDocAdapter.
 
         final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/M/yyyy");
         //DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        if ((LocalDate.now().isBefore(LocalDate.parse(currentFreeSlot.getDate(), formatter)))
+        /*if ((LocalDate.now().isBefore(LocalDate.parse(currentFreeSlot.getDate(), formatter)))
                 || (LocalDate.now().equals(LocalDate.parse(currentFreeSlot.getDate(), formatter)))) {
-            holder.tv_date.setText(currentFreeSlot.getDate());
+        */
+        holder.tv_date.setText(currentFreeSlot.getDate());
             holder.tv_time.setText(currentFreeSlot.getTime());
             holder.tv_location.setText(currentFreeSlot.getLocation());
 
@@ -126,7 +127,7 @@ public class FreeSlotDocAdapter extends RecyclerView.Adapter<FreeSlotDocAdapter.
         }
 
 
-    }
+    // }
 
 
     @Override

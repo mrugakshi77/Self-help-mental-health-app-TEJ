@@ -49,7 +49,7 @@ public class FreeSlotAdapter extends RecyclerView.Adapter<FreeSlotAdapter.FreeSl
     public void onBindViewHolder(@NonNull FreeSlotHolder holder, int position) {
         final FreeSlot currentFreeSlot = freeSlotList.get(position);
         Log.e("testDL3", "" + currentFreeSlot.getDate());
-        if (!currentFreeSlot.getStatusBooked()) {
+        // if (!currentFreeSlot.getStatusBooked()) {
 
             holder.tv_date.setText(currentFreeSlot.getDate());
             holder.tv_time.setText(currentFreeSlot.getTime());
@@ -88,7 +88,7 @@ public class FreeSlotAdapter extends RecyclerView.Adapter<FreeSlotAdapter.FreeSl
                 }
             });
         }
-    }
+    //}
 
     @Override
     public int getItemCount() {
