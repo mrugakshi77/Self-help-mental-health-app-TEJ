@@ -26,7 +26,7 @@ public class FreeSlotViewModel extends ViewModel {
     private DatabaseReference FREESLOTS_REF;
     private FirebaseQueryLiveData liveData;
     @SuppressLint("NewApi")
-    final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/M/yyyy");
+    final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public String getDocEmail() {
         return docEmail;
