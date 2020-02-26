@@ -72,7 +72,7 @@ public class FreeSlotDocAdapter extends RecyclerView.Adapter<FreeSlotDocAdapter.
         final FreeSlot currentFreeSlot = freeSlotList.get(position);
         Log.e("testDL3", "" + currentFreeSlot.getDate());
 
-        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/M/yyyy");
+        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         //DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         /*if ((LocalDate.now().isBefore(LocalDate.parse(currentFreeSlot.getDate(), formatter)))
                 || (LocalDate.now().equals(LocalDate.parse(currentFreeSlot.getDate(), formatter)))) {

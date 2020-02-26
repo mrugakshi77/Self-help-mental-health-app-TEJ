@@ -3,6 +3,7 @@ package com.example.mentalhealth.doctor_home.appointment;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,14 +71,18 @@ public class AddFreeSlotFragment extends Fragment {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         month = month + 1;
-                        dateTextView.setText(dayOfMonth + "/" + month + "/" + year);
-                        StringBuilder builder = new StringBuilder();
+                        String dateS = String.format("%02d-%02d-%d", dayOfMonth, month, year);
+                        dateTextView.setText(dateS + "");
+                       /* StringBuilder builder = new StringBuilder();
                         builder.append(dayOfMonth);
                         builder.append("/");
                         builder.append(month);
                         builder.append("/");
-                        builder.append(year);
-                        appointmentDate = String.valueOf(builder);
+                        builder.append(year);*/
+                        //String dateA = String.valueOf(builder)
+                        appointmentDate = String.format("%02d-%02d-%d", dayOfMonth, month, year);
+                        Log.e("date: ", appointmentDate + " ");
+
                     }
                 }, year, month, day);
                 datePickerDialog.show();
@@ -90,12 +95,13 @@ public class AddFreeSlotFragment extends Fragment {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        timeTextView.setText(hourOfDay + ":" + minute);
-                        StringBuilder builder = new StringBuilder();
+                        String timeS = String.format("%02d:%02d", hourOfDay, minute);
+                        timeTextView.setText(timeS + "");
+                       /* StringBuilder builder = new StringBuilder();
                         builder.append(hourOfDay);
                         builder.append(":");
-                        builder.append(minute);
-                        appointmentTime = String.valueOf(builder);
+                        builder.append(minute);*/
+                        appointmentTime = String.format("%02d:%02d", hourOfDay, minute);
                     }
                 }, hour, minutes, android.text.format.DateFormat.is24HourFormat(getContext()));
                 timePickerDialog.show();
