@@ -28,7 +28,7 @@ public class AppointmentViewModel extends ViewModel {
     private static final Query QUERY = APPT_REF.orderByChild("doctorEmail").equalTo(FirebaseAuth.getInstance().getCurrentUser().getEmail());
     private final FirebaseQueryLiveData liveData = new FirebaseQueryLiveData(QUERY);
     @SuppressLint("NewApi")
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/M/yyyy");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public LiveData<List<Appointment>> getAppointmentsLiveData() {
         LiveData<List<Appointment>> appointmentsLiveData = Transformations.map(liveData, new Deserializer());
