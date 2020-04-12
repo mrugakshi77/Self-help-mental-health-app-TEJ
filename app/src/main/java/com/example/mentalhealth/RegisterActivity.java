@@ -124,7 +124,7 @@ public class RegisterActivity extends AppCompatActivity {
                         i = new Intent(getApplicationContext(), PatientInfoActivity.class);
                         i.getBundleExtra(user.getEmail());
                         i.putExtra("user_type", "Patient");
-                        Toast.makeText(getApplicationContext(), "Patient Info", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "Patient Info", Toast.LENGTH_SHORT).show();
                         startActivity(i);
                     }
 

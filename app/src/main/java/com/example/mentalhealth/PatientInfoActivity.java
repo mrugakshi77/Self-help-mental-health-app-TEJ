@@ -91,7 +91,7 @@ public class PatientInfoActivity extends AppCompatActivity {
                     databaseReference.child("User").child(curr_user.getEmail().replace('.','&')).child("Profession").setValue(profession.getSelectedItem().toString());
                     databaseReference.child("User").child(curr_user.getEmail().replace('.','&')).child("Description").setValue(patientInfo.getDescribe());
 
-                    Toast.makeText(getApplicationContext(), "Saving Patient Info", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), "Saving Patient Info", Toast.LENGTH_LONG).show();
 
                     redirect(curr_user);
                 }
