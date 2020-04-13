@@ -19,18 +19,48 @@
             android:id="@+id/docName"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
+            android:paddingTop="15dp"
             android:text="TextView"
             android:textAlignment="center"
+            android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/docName2"
+            android:layout_width="70dp"
+            android:layout_height="45dp"
+            android:paddingTop="15dp"
+            android:text=" Name : "
+            android:textAlignment="center"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.255"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/docName4"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:paddingTop="15dp"
+            android:text="Specialization : "
+            android:textAlignment="center"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.128"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/docName2" />
+
+        <TextView
             android:id="@+id/docSpec"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
+            android:paddingTop="15dp"
             android:text="TextView"
             android:textAlignment="center"
+            android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/docName" />
@@ -39,8 +69,10 @@
             android:id="@+id/docQuali"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
+            android:paddingTop="15dp"
             android:text="TextView"
             android:textAlignment="center"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,14 +81,33 @@
         <Button
             android:id="@+id/viewSlots"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="120dp"
             android:layout_marginBottom="37dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginStart="63dp"
+            android:background="#43B494"
             android:text="View Slots"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/docSpec" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/docSpec"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/docName5"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:paddingTop="15dp"
+            android:text="Qualification : "
+            android:textAlignment="center"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.151"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/docName4" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
