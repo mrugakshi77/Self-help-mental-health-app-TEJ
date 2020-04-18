@@ -61,15 +61,12 @@ public class PatientInfoActivity extends AppCompatActivity {
     private StorageTask uploadTask;
     private ImageView displayPicture_patient;
 
-    private String uploadKey;
-    private String uname;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_info);
 
-        storageReference = FirebaseStorage.getInstance().getReference("posts");
+        storageReference = FirebaseStorage.getInstance().getReference("DP_Patients");
         dbref = FirebaseDatabase.getInstance().getReference("User");
         //databaseReference = FirebaseDatabase.getInstance().getReference("U");
         databaseRef = FirebaseDatabase.getInstance().getReference("downloadableURLs");
@@ -137,6 +134,9 @@ public class PatientInfoActivity extends AppCompatActivity {
                     //databaseReference.child("User").child(curr_user.getEmail().replace('.','&')).child("Profile Photo").setValue(patientInfo.getDescribe());
 
                     uploadFile();
+
+                    databaseReference.child("User").child(curr_user.getEmail().replace('.','&')).child("DP").setValue(uri);
+
                     //Toast.makeText(getApplicationContext(), "Saving Patient Info", Toast.LENGTH_LONG).show();
 
                     redirect(curr_user);
@@ -231,7 +231,7 @@ public class PatientInfoActivity extends AppCompatActivity {
                                 //uploadPhoto(dataSnapshot.child(curr_user.getEmail().replace('.', '&')).child("mName").getValue().toString());
 
                                 //uploadKey = databaseReference.push().getKey();
-                                dbref.child("User").child(curr_user.getEmail().replace('.', '&')).child("dp").setValue(uri);
+                                //dbref.child("User").child(curr_user.getEmail().replace('.', '&')).child("dp").setValue(uri);
                             }
 
 
