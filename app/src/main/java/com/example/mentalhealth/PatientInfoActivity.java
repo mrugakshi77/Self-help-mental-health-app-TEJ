@@ -54,7 +54,6 @@ public class PatientInfoActivity extends AppCompatActivity {
     Spinner marital_status;
     Spinner profession;
     EditText describe_patient;
-    private DatabaseReference databaseRef, dbref;
     private StorageReference storageReference;
     private static int PICK_IMAGE_REQUEST = 1;
     private Uri uri;
@@ -67,9 +66,6 @@ public class PatientInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient_info);
 
         storageReference = FirebaseStorage.getInstance().getReference("DP_Patients");
-        dbref = FirebaseDatabase.getInstance().getReference("User");
-        //databaseReference = FirebaseDatabase.getInstance().getReference("U");
-        databaseRef = FirebaseDatabase.getInstance().getReference("downloadableURLs");
 
         ActivityPatientInfoBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_patient_info);
         final PatientInfoViewModel patientInfoViewModel = ViewModelProviders.of(this).get(PatientInfoViewModel.class);
@@ -220,18 +216,18 @@ public class PatientInfoActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task) {
                     if (task.isSuccessful()) {
-                        Uri downloadUri = task.getResult();
+                        final Uri downloadUri = task.getResult();
                         Log.d(TAG, "onComplete: Url: " + downloadUri.toString());
                         //final com.example.mentalhealth.Model.Upload upload = new com.example.mentalhealth.Model.Upload(editText.getText().toString().trim(), downloadUri.toString());
 
-                        dbref.addListenerForSingleValueEvent(new ValueEventListener() {
+                        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                                 //uploadPhoto(dataSnapshot.child(curr_user.getEmail().replace('.', '&')).child("mName").getValue().toString());
 
                                 //uploadKey = databaseReference.push().getKey();
-                                databaseReference.child("User").child(currentUser.getEmail().replace('.', '&')).child("DP").setValue(uri);
+                                databaseReference.child("User").child(currentUser.getEmail().replace('.', '&')).child("DP").setValue(downloadUri.toString());
                             }
 
 
