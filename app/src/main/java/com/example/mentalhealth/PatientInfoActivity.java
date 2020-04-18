@@ -135,7 +135,7 @@ public class PatientInfoActivity extends AppCompatActivity {
 
                     uploadFile();
 
-                    databaseReference.child("User").child(curr_user.getEmail().replace('.','&')).child("DP").setValue(uri);
+                    //databaseReference.child("User").child(curr_user.getEmail().replace('.','&')).child("DP").setValue(uri);
 
                     //Toast.makeText(getApplicationContext(), "Saving Patient Info", Toast.LENGTH_LONG).show();
 
@@ -227,11 +227,11 @@ public class PatientInfoActivity extends AppCompatActivity {
                         dbref.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                FirebaseUser curr_user = FirebaseAuth.getInstance().getCurrentUser();
+                                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                                 //uploadPhoto(dataSnapshot.child(curr_user.getEmail().replace('.', '&')).child("mName").getValue().toString());
 
                                 //uploadKey = databaseReference.push().getKey();
-                                //dbref.child("User").child(curr_user.getEmail().replace('.', '&')).child("dp").setValue(uri);
+                                databaseReference.child("User").child(currentUser.getEmail().replace('.', '&')).child("DP").setValue(uri);
                             }
 
 

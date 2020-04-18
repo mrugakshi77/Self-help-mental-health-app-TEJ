@@ -67,7 +67,6 @@ public class DoctorInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_info);
 
-
         storageReference = FirebaseStorage.getInstance().getReference("DP_Doctors");
         dbref = FirebaseDatabase.getInstance().getReference("User");
         //databaseReference = FirebaseDatabase.getInstance().getReference("U");
@@ -132,7 +131,7 @@ public class DoctorInfoActivity extends AppCompatActivity {
                     databaseReference.child("User").child(curr_user.getEmail().replace('.','&')).child("Description").setValue(doctorInfo.getDescribe());
 
                     uploadFile();
-                    databaseReference.child("User").child(curr_user.getEmail().replace('.','&')).child("DP").setValue(uri);
+                    //databaseReference.child("User").child(curr_user.getEmail().replace('.','&')).child("DP").setValue(uri);
 
                     Toast.makeText(getApplicationContext(), "Saving Doc Info", Toast.LENGTH_LONG).show();
 
@@ -223,11 +222,11 @@ public class DoctorInfoActivity extends AppCompatActivity {
                         dbref.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                //FirebaseUser curr_user = FirebaseAuth.getInstance().getCurrentUser();
+                                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                                 //uploadPhoto(dataSnapshot.child(curr_user.getEmail().replace('.', '&')).child("mName").getValue().toString());
 
                                 //uploadKey = databaseReference.push().getKey();
-                                //dbref.child("User").child(curr_user.getEmail().replace('.', '&')).child("dp").setValue(uri);
+                                databaseReference.child("User").child(currentUser.getEmail().replace('.', '&')).child("DP").setValue(uri);
                             }
 
 
