@@ -41,7 +41,6 @@ public class Questionnaire extends AppCompatActivity {
     Questions[] obj = new Questions[20];
 
     info.hoang8f.widget.FButton fButton;
-    private QuestionnaireViewModel questionnaireViewModel;
     private RecyclerView recyclerView;
     private QuestionnaireAdapter questionnaireAdapter;
     RadioGroup rg;
@@ -123,8 +122,6 @@ public class Questionnaire extends AppCompatActivity {
         } catch (FirebaseMLException e) {
             e.printStackTrace();
         }
-
-        questionnaireViewModel = ViewModelProviders.of(this).get(QuestionnaireViewModel.class);
 
         rg = (RadioGroup)findViewById(R.id.radioGroup);
         fButton = findViewById(R.id.ques_submit);
@@ -227,6 +224,8 @@ public class Questionnaire extends AppCompatActivity {
                 if(flag==0){
                     Intent i = new Intent(Questionnaire.this, Patient_feed.class);
                     startActivity(i);
+
+                    finish();
                 }
 
             }

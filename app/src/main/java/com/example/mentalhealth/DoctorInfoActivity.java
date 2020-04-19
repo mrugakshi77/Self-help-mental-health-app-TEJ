@@ -144,6 +144,7 @@ public class DoctorInfoActivity extends AppCompatActivity {
     {
         Intent i = new Intent(DoctorInfoActivity.this, Doctor_MainActivity.class);
         startActivity(i);
+        finish();
     }
 
     private void openFileChooser() {

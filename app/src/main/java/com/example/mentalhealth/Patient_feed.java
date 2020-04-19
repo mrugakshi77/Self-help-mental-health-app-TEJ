@@ -8,15 +8,19 @@ import com.example.mentalhealth.patient_navbar.patient_home.PatientHomeFragment;
 import com.example.mentalhealth.patient_navbar.myaccount.MyAccountFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class Patient_feed extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,9 @@ public class Patient_feed extends AppCompatActivity {
 
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+
+
         navView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
             @Override
             public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
@@ -57,7 +64,7 @@ public class Patient_feed extends AppCompatActivity {
 
     private boolean loadFragment(Fragment fragment) {
         if (fragment != null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_patient, fragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_patient, fragment).addToBackStack(null).commit();
             return true;
         } else
             return false;

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mentalhealth.Adapter.PostAdapter;
+import com.example.mentalhealth.Patient_feed;
 import com.example.mentalhealth.R;
 import com.example.mentalhealth.Model.Upload;
 

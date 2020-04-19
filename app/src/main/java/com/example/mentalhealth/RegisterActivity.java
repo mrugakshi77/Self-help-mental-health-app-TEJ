@@ -117,6 +117,10 @@ public class RegisterActivity extends AppCompatActivity {
                         i.putExtra("user_type", "Doctor");
                         Toast.makeText(getApplicationContext(), "Doc Info", Toast.LENGTH_SHORT).show();
                         startActivity(i);
+
+                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        finish();
                     }
 
                     else if(user.getmType().equals("Patient"))
@@ -126,6 +130,10 @@ public class RegisterActivity extends AppCompatActivity {
                         i.putExtra("user_type", "Patient");
                         //Toast.makeText(getApplicationContext(), "Patient Info", Toast.LENGTH_SHORT).show();
                         startActivity(i);
+
+                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        finish();
                     }
 
                     /* Redirecting to dashboards
