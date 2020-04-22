@@ -39,7 +39,6 @@ public class DepressionTest extends AppCompatActivity {
     Questions[] obj = new Questions[20];
 
     info.hoang8f.widget.FButton fButton;
-    private QuestionnaireViewModel questionnaireViewModel;
     private RecyclerView recyclerView;
     private QuestionnaireAdapter questionnaireAdapter;
     RadioGroup rg;
@@ -123,6 +122,8 @@ public class DepressionTest extends AppCompatActivity {
                 if (flag == 0) {
                     Intent i = new Intent(DepressionTest.this, Patient_feed.class);
                     startActivity(i);
+
+                    finish();
                 }
 
             }

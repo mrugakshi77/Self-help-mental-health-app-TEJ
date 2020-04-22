@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mentalhealth.Adapter.PatientAdapter;
 import com.example.mentalhealth.Model.Patient;
+import com.example.mentalhealth.Patient_feed;
 import com.example.mentalhealth.R;
 
 import java.util.List;

@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mentalhealth.Adapter.AppointmentAdapter;
 import com.example.mentalhealth.LoginActivity;
 import com.example.mentalhealth.Model.Appointment;
+import com.example.mentalhealth.Patient_feed;
 import com.example.mentalhealth.R;
 import com.example.mentalhealth.doctor_home.notifications.NotificationsViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -50,6 +51,7 @@ public class AppointmentFragment extends Fragment {
         appointmentViewModel =
                 ViewModelProviders.of(this).get(AppointmentViewModel.class);
         View root = inflater.inflate(R.layout.fragment_appointmentsd, container, false);
+
 
         addSlotButton = root.findViewById(R.id.addFreeSlot_fabButton);
 

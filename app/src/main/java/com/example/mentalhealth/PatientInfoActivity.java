@@ -149,6 +149,7 @@ public class PatientInfoActivity extends AppCompatActivity {
 
         Intent i = new Intent(PatientInfoActivity.this, DepressionTest.class);
         startActivity(i);
+        finish();
     }
 
 
